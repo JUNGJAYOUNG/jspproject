@@ -2,7 +2,7 @@ package com.sist.vo;
 
 import java.sql.Date;
 
-public class DatailVO {
+public class DetailVO {
 	private int bp_no;
 	private String holiday;
 	private String time;
@@ -11,7 +11,7 @@ public class DatailVO {
 	private String fee;
 	private String company;
 	private String info;
-	public DatailVO(int bp_no, String holiday, String time, Date start_date, Date end_date, String fee, String company,
+	public DetailVO(int bp_no, String holiday, String time, Date start_date, Date end_date, String fee, String company,
 			String info) {
 		super();
 		this.bp_no = bp_no;
@@ -23,7 +23,7 @@ public class DatailVO {
 		this.company = company;
 		this.info = info;
 	}
-	public DatailVO() {
+	public DetailVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
