@@ -279,6 +279,7 @@ public class BPDAO {
 		System.out.println("s"+start);
 		System.out.println("e"+end);
 		
+		
 		ArrayList<BPVO> list = new ArrayList<BPVO>();
 		String sql="select business_no,name,image from "
 				+ "(select rownum n,business_no,name,image from "
