@@ -142,6 +142,7 @@ public class BPDAO {
 		}
 		return list;
 	}
+	//수정깃허브테스트
 	public ArrayList<BPVO> listApprovedBP(int pageNUM){
 		totalRecord2 = getApprovedRecord();
 		totalPage2 = (int)Math.ceil(totalRecord2/(double)pageSIZE);
