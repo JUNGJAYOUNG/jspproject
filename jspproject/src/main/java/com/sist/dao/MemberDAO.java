@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import com.sist.db.ConnectionProvider;
 import com.sist.vo.MemberVO;
 
+
 public class MemberDAO {
+
 	public static int pageSIZE = 10;	//한 화면에 보여줄 레코드의 수 
 	public static int totalRecord;		//전체 레코드의 수
 	public static int totalPage;		//전체 페이지의 수
@@ -108,4 +110,5 @@ public class MemberDAO {
 		}
 		return list;
 	}
+
 }

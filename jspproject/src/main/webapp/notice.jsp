@@ -105,7 +105,7 @@ $(function(){
 	<br>
 	</form>	
 	
-	<form name="f" action="notice.do" method="post" class="d-flex" style="width: 15rem;margin: auto;" >
+	<form name="f" action="notice.do" method="post" class="d-flex" style="width: 300px;margin: auto;" >
 		<select name="searchColum" id="searchColum">
 			<option value="notice_title">제목</option>
 			<option value="notice_content">내용</option>
@@ -113,10 +113,10 @@ $(function(){
 		</select>
 		
 		<input type="search" name="search" id="search" class="form-control me-sm-2">
-		<input type="date" name="date" id="date">
+		<input type="date" name="date" id="date" style="width: 400px;margin: auto;">
 		<input type="hidden" name="keyword" id="keyword">
 		<!-- <input type="button" value="검색" onclick="pro();"> -->
-		<button type="submit" class="btn btn-primary" onclick="pro();">검색</button>
+		<button type="submit" class="btn btn-primary" onclick="pro();" style="width: 200px;">검색</button>
 	</form>	
 	<br>
 	<br>

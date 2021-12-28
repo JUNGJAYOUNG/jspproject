@@ -21,9 +21,9 @@
 		<input type="hidden" name="qna_no" value="${q.qna_no }">
 		<div class="form-group" style="width: 60rem;margin: auto;">
 	      <label for="exampleTextarea" class="form-label mt-4">제목</label>
-	      <textarea class="form-control" id="notice_title" rows="3" name="qna_title"></textarea><br>
+	      <textarea class="form-control" id="notice_title" rows="3" name="qna_title"  maxlength="30"></textarea><br>
 	      <label for="exampleTextarea" class="form-label mt-4">내용</label>
-	      <textarea class="form-control" id="notice_content" rows="10"name="qna_content"></textarea><br>
+	      <textarea class="form-control" id="notice_content" rows="10"name="qna_content"  maxlength="1000"></textarea><br>
 	    </div>
 	    <div style="width: 10rem;margin: auto;">
 	    	<button type="submit" class="btn btn-primary" style="width: 10rem;margin: auto;">등록</button>

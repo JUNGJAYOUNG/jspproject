@@ -22,9 +22,9 @@
 		<input type="hidden" name="notice_no" value="${n.notice_no }">
 		<div class="form-group">
 	      <label for="exampleTextarea" class="form-label mt-4">제목</label>
-	      <textarea class="form-control" id="notice_title" rows="3" name="notice_title"></textarea><br>
+	      <textarea class="form-control" id="notice_title" rows="3" name="notice_title" maxlength="30"></textarea><br>
 	      <label for="exampleTextarea" class="form-label mt-4">내용</label>
-	      <textarea class="form-control" id="notice_content" rows="10"name="notice_content"></textarea><br>
+	      <textarea class="form-control" id="notice_content" rows="10"name="notice_content" maxlength="1000"></textarea><br>
 	    </div>
 	    <div style="width: 10rem;margin: auto;">
 	    	<button type="submit" class="btn btn-primary">등록</button>
