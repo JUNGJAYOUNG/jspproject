@@ -284,7 +284,7 @@ public class BPDAO {
 		String sql="select business_no,name,image from "
 				+ "(select rownum n,business_no,name,image from "
 				+ "(select business_no,name,image from businessplace "
-				+ "where business_type_no in (5,6,7,8,9,10) order by business_no desc)) "
+				+ "where business_type_no in (5,6,7,8,9,10) and register=1 order by business_no desc)) "
 				+ "where n between ? and ?";
 		try {
 			Connection conn = new ConnectionProvider().getConnection();
@@ -304,6 +304,284 @@ public class BPDAO {
 		
 	}
 
-
+	public int getNameBP(String business_name) {
+		int re=0;
+		String sql = "select business_no from businessplace where name=?";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, business_name);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				re = rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return re;
+	}
+	public int searchCntCulture(String search) {
+		int re=0;
+		String sql="select count(*)from businessplace "
+				+ "where name like '%' || ? || '%' and "
+				+ "business_type_no in (5,6,7,8,9,10) and register=1";
+		try {
+			Connection conn =ConnectionProvider.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				re=rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return re;
+	}
+	public ArrayList<BPVO>listSearchCulture(String search,int pageNUM){
+		
+		totalRecord2 = searchCntCulture(search);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from"
+				+ "(select rownum n,business_no,name,image from"
+				+ "(select business_no,name,image from businessplace "
+				+ "where name like '%' || ? || '%' "
+				+ "and business_type_no in (5,6,7,8,9,10) and register=1 order by business_no desc)) "
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+		
+	}
+	
+	public int getCulFavorRecord() {
+		int n=0;
+		String sql = "select count(*) from businessplace b, "
+				+ "(select business_no,nvl(count(*),0) cnt from favor group by business_no) a "
+				+ "where b.business_no = a.business_no and "
+				+ "business_type_no in (5,6,7,8,9,10)";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			Statement stmt=conn.createStatement();
+			ResultSet rs= stmt.executeQuery(sql);
+			if(rs.next()) {
+				n=rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, stmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return n;
+	}
+	
+	public ArrayList<BPVO>favorCulture(int pageNUM){
+		
+		totalRecord2 = getCulFavorRecord();
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name ,image from "
+				+ "(select rownum n,b.business_no,name ,image "
+				+ "from businessplace b, (select business_no,nvl(count(*),0) cnt from favor group by business_no) a "
+				+ "where b.business_no = a.business_no and "
+				+ "business_type_no in (5,6,7,8,9,10) order by cnt desc) where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public ArrayList<BPVO>nameCulture(int pageNUM){
+		
+		totalRecord2 = getCulApprovedRecord();
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from ("
+				+ "select business_no,name,image from businessplace "
+				+ "where business_type_no in (5,6,7,8,9,10)and register=1 order by name)) "
+				+ "where n between ? and ? order by n";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public int getCulHolidayRecord(String holiday) {
+		int n=0;
+		String sql ="select count(*) from businessplace "
+				+ "where business_no not in "
+				+ "(select business_no from detail where holiday like '%' || ? || '%') "
+				+ "and business_type_no in (5,6,7,8,9,10) and register=1";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, holiday);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				n=rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return n;
+	}
+	
+	public ArrayList<BPVO>holidayCulture(String holiday,int pageNUM){
+		
+		totalRecord2 = getCulHolidayRecord(holiday);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from businessplace "
+				+ "where business_no not in "
+				+ "(select business_no from detail where holiday like '%' || ? || '%')"
+				+ "and business_type_no in (5,6,7,8,9,10) and register=1)"
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, holiday);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	public int getCulLocRecord(String loc) {
+		int n=0;
+		String sql ="select count(*) from businessplace "
+				+ "where loc like ? || '%' and business_type_no in (5,6,7,8,9,10) and register=1";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, loc);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				n=rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return n;
+	}
+	
+	public ArrayList<BPVO>locCulture(String loc,int pageNUM){
+		
+		totalRecord2 = getCulLocRecord(loc);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from businessplace "
+				+ "where loc like ? || '%' and business_type_no in (5,6,7,8,9,10) and register=1)"
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, loc);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
 
 }
