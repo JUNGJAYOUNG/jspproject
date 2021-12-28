@@ -37,3 +37,4 @@ public class UpdatePwdAction implements SistAction {
 		return viewPage;
 	}
 }
+
