@@ -16,6 +16,8 @@ public class BPVO {
 	private int member_no;
 	private int reco_no;
 	private int bussiness_type_no;
+	private String bussiness_type_name;
+	private int rownum;
 	public BPVO(int bp_no, String bp_name, String loc, String bp_tel, Date bp_date, String sup, String domain,
 			String image, int register, int manager_no, int member_no, int reco_no, int bussiness_type_no) {
 		super();
@@ -50,6 +52,16 @@ public class BPVO {
 		this.bp_no = bp_no;
 		this.bp_name = bp_name;
 		this.bussiness_type_no = bussiness_type_no;
+	}
+	
+	
+	
+	
+	public BPVO(String bussiness_type_name, String bp_name, int bp_no ) {
+		super();
+		this.bussiness_type_name = bussiness_type_name;
+		this.bp_name = bp_name;
+		this.bp_no = bp_no;
 	}
 	public BPVO() {
 		super();
@@ -133,5 +145,19 @@ public class BPVO {
 	public void setBussiness_type_no(int bussiness_type_no) {
 		this.bussiness_type_no = bussiness_type_no;
 	}
+	public String getBussiness_type_name() {
+		return bussiness_type_name;
+	}
+	public void setBussiness_type_name(String bussiness_type_name) {
+		this.bussiness_type_name = bussiness_type_name;
+	}
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
+	
+	
 	
 }
