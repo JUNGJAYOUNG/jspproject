@@ -43,8 +43,8 @@ public class ReviewDAO {
 		System.out.println("e"+end);
 		
 		ArrayList<ReviewVO> list = new ArrayList<ReviewVO>();
-		String sql="select review_date, comments, member_name from "
-				+ "select rownum n,review_date, comments, member_name from "
+		String sql="select review_date, comments, member_name from("
+				+ "select rownum n,review_date, comments, member_name from("
 				+ "select review_date, comments, member_name from review,member "
 				+ "where review.member_no=member.member_no and business_no=? order by review_date desc)) "
 				+ "where n between ? and ?";

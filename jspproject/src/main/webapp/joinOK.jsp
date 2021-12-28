@@ -5,13 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
-
-<a href="listQna.do" >QNA</a>
-<a href="notice.do" >Notice</a>
-<a href="tourDetail.do?no=9">관광상세</a>
-
+<h2>회원가입을 축하합니다.</h2>
+<a href="login.jsp">로그인하기</a>
 </body>
 </html>

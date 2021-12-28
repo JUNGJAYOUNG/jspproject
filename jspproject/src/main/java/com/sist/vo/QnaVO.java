@@ -10,6 +10,7 @@ public class QnaVO {
 	private String ans;
 	private int manager_no;
 	private int member_no;
+	private int rownum;
 	private String member_id;
 	
 	public String getMember_id() {
@@ -48,6 +49,14 @@ public class QnaVO {
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;
 		this.qna_content = qna_content;
+	}
+	
+	public QnaVO(int qna_no, String qna_title, Date qna_date,int rownum) {
+		super();
+		this.qna_no = qna_no;
+		this.qna_title = qna_title;
+		this.qna_date = qna_date;
+		this.rownum = rownum;
 	}
 	public QnaVO(String qna_title, String qna_content, int manager_no) {
 		super();
@@ -101,6 +110,12 @@ public class QnaVO {
 	}
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 	
 }
