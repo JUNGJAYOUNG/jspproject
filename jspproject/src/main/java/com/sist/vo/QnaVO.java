@@ -10,6 +10,22 @@ public class QnaVO {
 	private String ans;
 	private int manager_no;
 	private int member_no;
+	private int rownum;
+	private String member_id;
+	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public QnaVO(int qna_no, String qna_title, String member_id, Date qna_date) {
+		super();
+		this.qna_no = qna_no;
+		this.qna_title = qna_title;
+		this.member_id = member_id;
+		this.qna_date = qna_date;
+	}
 	public QnaVO(int qna_no, String qna_title, Date qna_date, String qna_content, String ans, int manager_no,
 			int member_no) {
 		super();
@@ -34,6 +50,14 @@ public class QnaVO {
 		this.qna_title = qna_title;
 		this.qna_content = qna_content;
 	}
+	
+	public QnaVO(int qna_no, String qna_title, Date qna_date,int rownum) {
+		super();
+		this.qna_no = qna_no;
+		this.qna_title = qna_title;
+		this.qna_date = qna_date;
+		this.rownum = rownum;
+	}
 	public QnaVO(String qna_title, String qna_content, int manager_no) {
 		super();
 		this.qna_title = qna_title;
@@ -44,6 +68,7 @@ public class QnaVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public int getQna_no() {
 		return qna_no;
 	}
@@ -85,6 +110,12 @@ public class QnaVO {
 	}
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 	
 }

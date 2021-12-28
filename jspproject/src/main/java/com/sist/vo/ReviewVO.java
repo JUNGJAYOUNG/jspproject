@@ -8,6 +8,20 @@ public class ReviewVO {
 	private String comments;
 	private int bp_no;
 	private int member_no;
+	private String member_name;
+	private String bp_name;
+	private int rownum;
+	
+	public ReviewVO(Date review_date, String comments, int bp_no, String bp_name, int rownum) {
+		super();
+		this.review_date = review_date;
+		this.comments = comments;
+		this.bp_no = bp_no;
+		this.bp_name = bp_name;
+		this.rownum = rownum;
+	}
+
+
 	public ReviewVO(int review_no, Date review_date, String comments, int bp_no, int member_no) {
 		super();
 		this.review_no = review_no;
@@ -15,6 +29,33 @@ public class ReviewVO {
 		this.comments = comments;
 		this.bp_no = bp_no;
 		this.member_no = member_no;
+	}
+
+
+	public ReviewVO(int review_no, Date review_date, String comments, String bp_name) {
+		super();
+		this.review_no = review_no;
+		this.review_date = review_date;
+		this.comments = comments;
+		this.bp_name = bp_name;
+	}
+
+
+	public ReviewVO(int review_no, Date review_date, String comments, int bp_no, int member_no, String member_name) {
+		super();
+		this.review_no = review_no;
+		this.review_date = review_date;
+		this.comments = comments;
+		this.bp_no = bp_no;
+		this.member_no = member_no;
+		this.member_name = member_name;
+	}
+
+	public ReviewVO(Date review_date, String comments, String member_name) {
+		super();
+		this.review_date = review_date;
+		this.comments = comments;
+		this.member_name = member_name;
 	}
 	public ReviewVO() {
 		super();
@@ -49,6 +90,32 @@ public class ReviewVO {
 	}
 	public void setMember_no(int member_no) {
 		this.member_no = member_no;
+	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
+
+	public String getBp_name() {
+		return bp_name;
+	}
+
+
+	public void setBp_name(String bp_name) {
+		this.bp_name = bp_name;
+	}
+
+
+	public int getRownum() {
+		return rownum;
+	}
+
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
 	
 }
