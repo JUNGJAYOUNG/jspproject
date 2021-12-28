@@ -18,6 +18,7 @@
 %>
 
 
+
 <nav class="navbar">
 		<div class="navbar_logo"> 
 			<a href="#"><img id="logo" src="image/logo.png"></a>

@@ -16,7 +16,7 @@ public class BPVO {
 	private int member_no;
 	private int reco_no;
 	private int bussiness_type_no;
-	private String bussiness_type_name;
+	private String business_type_name;
 	private int rownum;
 	public BPVO(int bp_no, String bp_name, String loc, String bp_tel, Date bp_date, String sup, String domain,
 			String image, int register, int manager_no, int member_no, int reco_no, int bussiness_type_no) {
@@ -54,18 +54,32 @@ public class BPVO {
 		this.bussiness_type_no = bussiness_type_no;
 	}
 	
-	
-	
-	
-	public BPVO(String bussiness_type_name, String bp_name, int bp_no ) {
-		super();
-		this.bussiness_type_name = bussiness_type_name;
-		this.bp_name = bp_name;
-		this.bp_no = bp_no;
-	}
+
 	public BPVO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	public BPVO(int bp_no, String bp_name, int register, int rownum) {
+		super();
+		this.bp_no = bp_no;
+		this.bp_name = bp_name;
+		this.register = register;
+		this.rownum = rownum;
+	}
+	
+	public BPVO(String business_type_name,String bp_name,int bp_no ) {
+		super();	
+		this.business_type_name = business_type_name;
+		this.bp_name = bp_name;
+		this.bp_no = bp_no;
+	}
+	public BPVO(int bp_no, String bp_name, String image, int rownum) {
+		super();
+		this.bp_no = bp_no;
+		this.bp_name = bp_name;
+		this.image = image;
+		this.rownum = rownum;
 	}
 	public int getBp_no() {
 		return bp_no;
@@ -145,11 +159,11 @@ public class BPVO {
 	public void setBussiness_type_no(int bussiness_type_no) {
 		this.bussiness_type_no = bussiness_type_no;
 	}
-	public String getBussiness_type_name() {
-		return bussiness_type_name;
+	public String getBusiness_type_name() {
+		return business_type_name;
 	}
-	public void setBussiness_type_name(String bussiness_type_name) {
-		this.bussiness_type_name = bussiness_type_name;
+	public void setBusiness_type_name(String business_type_name) {
+		this.business_type_name = business_type_name;
 	}
 	public int getRownum() {
 		return rownum;
@@ -157,7 +171,5 @@ public class BPVO {
 	public void setRownum(int rownum) {
 		this.rownum = rownum;
 	}
-	
-	
 	
 }

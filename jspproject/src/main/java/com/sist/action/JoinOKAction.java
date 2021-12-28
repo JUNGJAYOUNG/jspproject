@@ -57,6 +57,8 @@ public class JoinOKAction implements SistAction {
 			viewPage="joinOK.jsp";
 		}else {
 			viewPage="b.jsp";
+			viewPage="error.jsp";
+			request.setAttribute("msg","회원가입에 실패하였습니다.");
 		}
 		return viewPage;
 	}
