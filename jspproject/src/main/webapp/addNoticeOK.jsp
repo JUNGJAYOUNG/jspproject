@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>회원가입을 축하합니다.</h2>
-<a href="login.jsp">로그인하기</a>
+<%
+	response.sendRedirect("notice.do");
+%>
 </body>
 </html>
