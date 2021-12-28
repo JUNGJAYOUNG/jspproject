@@ -50,14 +50,14 @@ public class MemberDAO {
 	//아이디 찾아서 반환하는 메소드
 	public String findID(String member_name, String member_tel, Date birth) {
 		String member_id="";
-		String sql = "select member_id from member where member_name =? and member_tel = ? and birth = ?";
+		String sql = "select member_id from member where member_name = ? and member_tel = ? and birth = ?";
 		try {
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_name);
 			pstmt.setString(2, member_tel);
 			pstmt.setDate(3, birth);
-			
+		
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -68,6 +68,49 @@ public class MemberDAO {
 			System.out.println("예외발생:"+e.getMessage());
 		}
 		return member_id;
+	}
+	
+	//비밀번호 찾아서 해당 회원번호 반환하는 메소드
+	public int findPwd(String member_id, String member_name, String member_tel, Date birth) {
+		int member_no=0;
+		String sql = "select member_no,member_pwd from member where member_id = ? and member_name = ? and member_tel = ? and birth = ?";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, member_name);
+			pstmt.setString(3, member_tel);
+			pstmt.setDate(4, birth);
+		
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				member_no = rs.getInt(1);
+			}
+			ConnectionProvider.close(conn,pstmt,rs);
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return member_no;
+	}
+	
+	//비밀번호 수정하는 메소드
+	public int updatePwd(int member_no, String member_pwd) {
+		int re = -1;
+		String sql = "update member set member_pwd = ? where member_no = ?";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_pwd);
+			pstmt.setInt(2, member_no);
+		
+			re = pstmt.executeUpdate();
+			
+			ConnectionProvider.close(conn,pstmt);
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return re;
 	}
 	
 	//회원번호 반환하는 메소드
@@ -86,6 +129,26 @@ public class MemberDAO {
 			System.out.println("예외발생:"+e.getMessage());
 		}
 		return no;
+	}
+	
+	public boolean login(String member_id, String member_pwd) {
+		boolean result = false;
+		String sql = "select * from member where member_id = ? and member_pwd = ?";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, member_pwd);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = true;
+			}
+			ConnectionProvider.close(conn,pstmt,rs);
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return result;
 	}
 	
 	public int insertMember(MemberVO m) {
