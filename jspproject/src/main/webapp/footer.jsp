@@ -13,7 +13,7 @@
 <footer>
 	<div class="footer_box">
 		<div class="footer_logo">
-		<img src="image/bg.png" width="200px;" height="200px;">
+		<img src="image/logo.png" width="200px;" height="200px;">
 		</div>
 		<div class="footer_addr">
 			<ul>
