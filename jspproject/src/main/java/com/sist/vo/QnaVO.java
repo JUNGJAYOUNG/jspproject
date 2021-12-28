@@ -11,6 +11,21 @@ public class QnaVO {
 	private int manager_no;
 	private int member_no;
 	private int rownum;
+	private String member_id;
+	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public QnaVO(int qna_no, String qna_title, String member_id, Date qna_date) {
+		super();
+		this.qna_no = qna_no;
+		this.qna_title = qna_title;
+		this.member_id = member_id;
+		this.qna_date = qna_date;
+	}
 	public QnaVO(int qna_no, String qna_title, Date qna_date, String qna_content, String ans, int manager_no,
 			int member_no) {
 		super();
@@ -53,6 +68,7 @@ public class QnaVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public int getQna_no() {
 		return qna_no;
 	}

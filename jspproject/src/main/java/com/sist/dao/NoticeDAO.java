@@ -129,9 +129,14 @@ public class NoticeDAO {
 			String sql2 = "select * from notice ";
 			
 			if(keyword != null) {
-				sql2 += " where " + searchColum + " like '%"+keyword+"%'";
-				System.out.println("searchColum:"+searchColum);
-				System.out.println("keyword:"+keyword);
+				
+				if(searchColum.equals("notice_date")) {
+					sql2 += "where notice_date = '"+keyword+"'";
+				}else {
+					sql2 += " where " + searchColum + " like '%"+keyword+"%'";
+					System.out.println("searchColum:"+searchColum);
+					System.out.println("keyword:"+keyword);
+				}
 			}
 			
 			

@@ -118,5 +118,4 @@ public class ReviewVO {
 		this.rownum = rownum;
 	}
 	
-	
 }

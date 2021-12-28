@@ -68,6 +68,7 @@ public class MemberDAO {
 		}
 		return re;	
 	}
+	
 	public int getMemberReviewRecord(int no) {
 		int n=0;
 		String sql = "select count(*) from review where member_no=?";
@@ -293,4 +294,61 @@ public class MemberDAO {
 		return re;
 		
 	} 
+
+	public static int pageSIZEL = 10;	//한 화면에 보여줄 레코드의 수 
+	public static int totalRecord;		//전체 레코드의 수
+	public static int totalPage;		//전체 페이지의 수
+	
+	//전체 레코드의 수를 반환하는 메소드
+	public int getTotalRecord() {
+		int n = 0;
+		String sql = "select count(*) from board";
+	
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				n = rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, stmt);
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return n;
+	}
+
+	
+	public ArrayList<MemberVO> listMember(int pageNUM){
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		
+		totalRecord = getTotalRecord();
+		totalPage = (int)Math.ceil(totalRecord/(double)pageSIZEL);
+		
+		int start = (pageNUM-1)*MemberDAO.pageSIZEL +1;
+		int end = start + MemberDAO.pageSIZEL-1;
+		
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			
+			String sql = "select * from member where member_no between ? and ?";
+			
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			
+			ResultSet rs = pstmt.executeQuery();
+	
+			while(rs.next()) {
+				list.add(new MemberVO(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5),
+						rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return list;
+	}
+
+	
 }

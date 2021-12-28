@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 import com.sist.db.ConnectionProvider;
 import com.sist.vo.BPVO;
-import com.sist.vo.BusinessTypeVO;
 
 public class BPDAO {
+
 	public static int pageSIZE=5;
 	public static int culPageSIZE=6;
 	public static int totalRecord;
@@ -583,5 +583,6 @@ public class BPDAO {
 		}
 		return list;
 	}
+
 
 }
