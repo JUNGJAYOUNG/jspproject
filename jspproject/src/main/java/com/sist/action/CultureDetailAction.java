@@ -7,6 +7,7 @@ import java.util.concurrent.RecursiveAction;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.BPDAO;
 import com.sist.dao.DetailDAO;
@@ -46,41 +47,41 @@ public class CultureDetailAction implements SistAction {
 		
 		String sup = b.getSup();
 		System.out.println(sup);
-		String  babycar="babycarX.png";
-		String babyinner="babyinnerX.png";
-		String dotinfo="dotinfoX.png";
-		String ele="eleX.png";
-		String parking="parkingX.png";
-		String round="roundX.png";
-		String speaking="speakingX.png";
-		String toliet="tolietX.png";
-		String wheel="wheelX.png";
+		String babycar="x.png";
+		String babyinner="x.png";
+		String dotinfo="x.png";
+		String ele="x.png";
+		String parking="x.png";
+		String round="x.png";
+		String speaking="x.png";
+		String toliet="x.png";
+		String wheel="x.png";
 		if(sup.indexOf("유아차")!=-1) {
-			babycar="babycar.png";
+			babycar="babycar1.png";
 		}
 		if(sup.indexOf("기저귀")!=-1) {
-			babyinner="babyinner.png";
+			babyinner="babyinner1.png";
 		}
 		if(sup.indexOf("점자안내판")!=-1) {
-			dotinfo="dotinfo.png";
+			dotinfo="dotinfo1.png";
 		}
 		if(sup.indexOf("승강기")!=-1) {
-			ele="ele.png";
+			ele="ele1.png";
 		}
 		if(sup.indexOf("주차장")!=-1) {
-			parking="parking.png";
+			parking="parking1.png";
 		}
 		if(sup.indexOf("경사로")!=-1) {
-			round="round.png";
+			round="round1.png";
 		}
 		if(sup.indexOf("음성안내기")!=-1) {
-			speaking="speaking.png";
+			speaking="speaking1.png";
 		}
 		if(sup.indexOf("화장실")!=-1) {
-			toliet="toliet.png";
+			toliet="toliet1.png";
 		}
 		if(sup.indexOf("휠체어")!=-1) {
-			wheel="wheel.png";
+			wheel="wheel1.png";
 		}
 		
 		
@@ -110,9 +111,11 @@ public class CultureDetailAction implements SistAction {
 			System.out.println(re.getReview_date());
 		}
 		
+		HttpSession session = request.getSession();
 		
+		int member_no = (Integer)session.getAttribute("member_no");
 		
-		int re = f_dao.checkedFavor(bp_no, 3);
+		int re = f_dao.checkedFavor(bp_no, member_no);
 		
 		String image= "emptyheart.png";
 		if(re!=0) {

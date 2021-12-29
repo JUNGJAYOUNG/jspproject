@@ -175,39 +175,37 @@ a{
 
 <nav class="navbar" style='background: url("image/bg.png") no-repeat center; 	background-size: 100% 100%;'>
 		<div class="navbar_logo"> 
-			<a href="main.jsp"><img id="logo" src="image/logo.png"></a>
+			<a href="main.do"><img id="logo" src="image/logo.png"></a>
 		</div>
 
 		<ul class="navbar_menu">
-			<li><a href="tour.jsp">관광배프</a></li>
-			<li><a href="culture.jsp">문화배프</a></li>
-			<li><a href="addBusinessPlace.jsp">사업장등록</a></li>
-			<li><a href="notice.jsp">공지사항</a></li>
-			<li><a href="addQna.jsp">문의사항</a></li>
+			<li><a href="tour.do">관광배프</a></li>
+			<li><a href="culture.do">문화배프</a></li>
+			<li><a href="addBusinessPlace.do">사업장등록</a></li>
+			<li><a href="notice.do">공지사항</a></li>
+			<li><a href="addQna.do">문의사항</a></li>
 		</ul>
-			<%
-                   	if(member_id==null){
-            %>
-		<ul class="navbar_link">
-                    <a class="nav_btn" href="login.jsp">
+		
+			<ul class="navbar_link">
+			<% if(member_id==null){%>
+                    <a class="nav_btn" href="login.do">
                         <button class="btn btn-success btn-lg">로그인</button>
                     </a>
-                    <a class="nav-btn" href="join.jsp">
+                    <a class="nav-btn" href="join.do">
                        <button class="btn btn-success btn-lg">회원가입</button>
                     </a>
   			<%
 			}else{
 			%>
-					 <a class="nav_btn" href="#">
-                        <button class="btn btn-success btn-lg">로그아웃</button>
-                    </a>
-                    <a class="nav-btn" href="mypage.jsp">
-                       <button class="btn btn-success btn-lg">마이페이지</button>
-                    </a>
+				 <a class="nav_btn" href="logout.do">
+                       <button class="btn btn-success btn-lg">로그아웃</button>
+                   </a>
+                 <a class="nav-btn" href="mypage.do">
+                      <button class="btn btn-success btn-lg">마이페이지</button>
+                 </a>
 			<% 
 			}
 			%>
-			
 		</ul>
 	</nav>
 </body>

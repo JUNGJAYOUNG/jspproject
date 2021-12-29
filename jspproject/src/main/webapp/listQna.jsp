@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +25,9 @@
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item active">문의사항</li>
 	</ol>
+	<br>
+	<br>
+	<br>
 	
 	<div>
 	<table class="table table-hover">
@@ -56,7 +60,9 @@
 		</c:forEach>
 	</div>
 	<br>
-
+	<br>
+	<br>
+	<br>
 	
 	<jsp:include page="footer.jsp"/>
 

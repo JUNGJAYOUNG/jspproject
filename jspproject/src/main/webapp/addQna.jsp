@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	  <li class="breadcrumb-item"><a href="listQna.do">문의사항</a></li>
 	  <li class="breadcrumb-item active">문의사항 등록</li>
 	</ol>
-
+	<br>
 	<br>
 	<br>
 	
@@ -33,7 +34,9 @@
 	    	<button type="submit" class="btn btn-primary" style="width: 10rem;margin: auto;">등록</button>
 	    </div>
     </form>
-
+	<br>
+	<br>
+	<br>
     <jsp:include page="footer.jsp"/>
 
 </body>

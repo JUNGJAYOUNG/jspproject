@@ -7,17 +7,6 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<!-- 
-<script type="text/javascript">
-function msg(){
-	var msg = "${msg}";
-	if(msg.value!=null){
-        alert(msg);
-        return false;
-    }
-}
-</script>
- -->
 <style type="text/css">
 body {
   margin: 0;
@@ -26,8 +15,9 @@ body {
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
+  margin: auto;
   margin-top: 120px;
-  max-width: 600px;
+  max-width: 330px;
   height: 320px;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
@@ -80,6 +70,7 @@ body {
 .text-secondary {
   color: #f3969a;
 }
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -90,7 +81,6 @@ body {
 	  <li class="breadcrumb-item active">로그인</li>
 	</ol>
 <div id="login">
-	<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;로그인
 	<div class="container">
 	 <div id="login-row" class="row justify-content-center align-items-center">
       	<div id="login-column" class="col-md-6">
@@ -119,6 +109,7 @@ body {
 		</div>				
 	</div>
 </div>
+<br><br><br>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

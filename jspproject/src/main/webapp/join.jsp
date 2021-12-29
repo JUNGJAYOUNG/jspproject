@@ -233,7 +233,7 @@ function validation(){
 				<input type="text" name="hobby" id="hobby" class="form-control">
 			</div>
 			<div class="btn-block" style="position:absolute;top:500px;left:600px;">
-				<input type="reset" value="취소" class="btn btn-secondary">
+				<button type="button" class="btn btn-secondary"><a href="login.do" style="text-decoration:none;color:white;">취소</a></button>
 				<input type="submit" value="가입" class="btn btn-primary">
 			</div>
 	</div>
@@ -242,6 +242,9 @@ function validation(){
 </div>
 </div>
 </div>
+<br>
+<br>
+<br>
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

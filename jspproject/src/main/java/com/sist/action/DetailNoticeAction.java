@@ -21,7 +21,7 @@ public class DetailNoticeAction implements SistAction {
 		NoticeVO n = dao.getNotice(notice_no);
 		request.setAttribute("n",n);
 		String content = n.getNotice_content();
-		content = content.replace("\r\n", "<br>");
+		//content = content.replace("\r\n", "<br>");
 		request.setAttribute("content", content);
 		//System.out.println(content);
 		return "detailNotice.jsp";

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,7 +126,7 @@
 			<c:forEach var="q" items="${qnalist }">
 				<tr>
 					<td>${q.rownum}</td>
-					<td><a href="#detailQna.do?member_no=${member_no }">${q.qna_title }</a></td>
+					<td><a href="detailQna.do?qna_no=${q.qna_no}">${q.qna_title }</a></td>
 					<td>${q.qna_date }</td>
 				</tr>
 			</c:forEach>
@@ -139,11 +140,10 @@
 		<br>
 		<br>
 		<br>
-		&nbsp;&nbsp;<label>회원정보 수정&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;회원탈퇴</label>
 		<div>
-		<button class="btn btn-primary" onclick="location.href='deleteMember.do'">회원정보 수정</button>
+		<button class="btn btn-primary" onclick="location.href='updateMember.do'">회원정보 수정</button>
 		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-		<button class="btn btn-primary" onclick="location.href='deleteMember.do'">회원 탈퇴</button>
+		<!-- <button class="btn btn-primary" onclick="location.href='deleteMember.do'">회원 탈퇴</button> -->
 		</div>
 		<jsp:include page="footer.jsp"/>
 </body>

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		response.sendRedirect("culture.do");
+		response.sendRedirect("main.do");
 	%>
 </body>
 </html>

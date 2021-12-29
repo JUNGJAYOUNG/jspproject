@@ -21,7 +21,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(function(){
-	var arr= ["test.png","logo.png"];
+	var arr= ["banner1.png","banner2.png","banner3.png","banner4.png","banner5.jpg"]; 
+	//var arr= ["test.png","logo.png"];
 	var i=0;
 	setInterval(function(){
 		//var fname = 'url("image/'+ arr[i]+')';
@@ -29,6 +30,7 @@ $(function(){
 		console.log(i);
 		console.log(fname);
 		$(".main-banner").css("background",fname);
+		$(".main-banner").css("background-size","100% 100%");
 		i=i+1;
 		if(i>=arr.length){
 			i=0;
@@ -39,21 +41,6 @@ $(function(){
 </head>
 <jsp:include page="menu.jsp"/>
 <body>
-	<%
-		String re = (String)session.getAttribute("member");
-	
-		if(re==null)
-		{
-			response.sendRedirect("login.jsp");
-		}
-		
-		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("name");
-
-	%>
-	<h2><%=name %> 회원님 환영합니다.</h2>
-	<hr>
-	<a href="listMember.do">1번째 서비스</a><br>
 	<div class="main-banner">
 		<div class="form-wrapper">
 		<form action="searchOK.do?keyword=keyword" >
@@ -79,7 +66,7 @@ $(function(){
 	<c:forEach var="c" items="${listNotice}">
 	<tr>
 		<td>${c.notice_no}</td>
-		<td><a href="notice.jsp?notice_no=${c.notice_no}">${c.notice_title}</a></td>
+		<td><a href="detailMemberNotice.do?notice_no=${c.notice_no}">${c.notice_title}</a></td>
 		<td>${c.notice_date}</td>
 	</tr>
 	</c:forEach>
@@ -97,8 +84,8 @@ $(function(){
       <div class="swiper-wrapper">
   		<c:forEach var="c" items="${listRecBP}">
         <div class="swiper-slide ">
-        	<a href="tourDetail.jsp?bp_no=${c.bp_no}">
-        		<img src="image/logo.png" alt="이미지가없어요!">
+        	<a href="tourDetail.do?no=${c.bp_no}">
+        		<img src="upload/${c.image}" alt="이미지가없어요!">
         	</a>
         	<p>${c.bp_name}</p>
         </div>
@@ -115,8 +102,8 @@ $(function(){
       <div class="swiper-wrapper">
   		<c:forEach var="c" items="${listCultureNow}">
         <div class="swiper-slide">
-        	<a href="cultureDetail.jsp?bp_no=${c.bp_no}">
-        	<img src="image/logo.png" alt="이미지가없어요!">
+        	<a href="cultureDetail.do?no=${c.bp_no}">
+        	<img src="upload/${c.image}" alt="이미지가없어요!">
         	</a>
         	<p>${c.bp_name}</p>
         </div>
@@ -141,6 +128,6 @@ $(function(){
         },
       });
 </script>
-
+	
 </body>
 </html>

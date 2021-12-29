@@ -21,16 +21,21 @@ public class LoginOKAction implements SistAction {
 	public String proRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
 		String member_id = request.getParameter("member_id");
 		String member_pwd = request.getParameter("member_pwd");
 		boolean result = dao.login(member_id, member_pwd);
+		HttpSession session = request.getSession();
+		MemberDAO dao = new MemberDAO();
+		int member_no = dao.getMemberNo(member_id);
 		
 		String viewPage="";
 		if(result) {
-			viewPage="main.jsp";
+			viewPage="start.jsp";
+			session.setAttribute("member_id",member_id);
+			session.setAttribute("member_no",member_no);
 		}else {
-			viewPage="login.jsp";
-			request.setAttribute("msg", "로그인에 실패하였습니다. 다시 입력해주세요.");
+			viewPage="loginFail.jsp";
 		}
 		return viewPage;
 	}

@@ -15,8 +15,9 @@ body {
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
+  margin: auto;
   margin-top: 120px;
-  max-width: 600px;
+  max-width: 330px;
   height: 320px;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
@@ -130,7 +131,8 @@ $(document).ready(function(){
 			</div>
 			</div>
 		</div>			
-	</div>			
+	</div>		
+	<br><br><br>	
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

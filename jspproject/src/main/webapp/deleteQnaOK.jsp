@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +10,8 @@
 <body>
 <jsp:include page="menu.jsp"/>
 <%
-response.sendRedirect("listQna.do");
+	response.sendRedirect("mypage.do");
 %>
-<a href="listQna.do">문의사항 목록</a>
 <jsp:include page="footer.jsp"/>
 </body>
 </html>

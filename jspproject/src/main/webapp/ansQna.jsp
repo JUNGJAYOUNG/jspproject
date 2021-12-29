@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,10 @@
 	  <li class="breadcrumb-item"><a href="listQna.do">문의사항</a></li>
 	  <li class="breadcrumb-item active">문의사항 답변등록</li>
 	</ol>
-
+	<br>
+	<br>
+	<br>
+	
 	<form action="ansQnaOK.do" method="post" >
 		<div class="card text-white bg-primary mb-3" style="width: 60rem;margin: auto">
 		<input type="hidden" name="qna_no" value="${q.qna_no }">
@@ -42,7 +46,9 @@
 	  </div>
     </form>
 
-
+	<br>
+	<br>
+	<br>
 	<jsp:include page="footer.jsp"/>
 
 </body>

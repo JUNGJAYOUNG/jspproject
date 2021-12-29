@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.NoticeDAO;
 import com.sist.dao.QnaDAO;
@@ -21,9 +22,13 @@ public class AddQnaOKAction implements SistAction {
 	public String proRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();
+		
+		int member_no = (Integer)session.getAttribute("member_no");
 		
 		QnaVO q = new QnaVO();
 		//q.setQna_no(Integer.parseInt(request.getParameter("qna_no")));
+		q.setMember_no(member_no);
 		q.setQna_title(request.getParameter("qna_title"));
 		q.setQna_content(request.getParameter("qna_content"));
 		q.setAns(request.getParameter("ans"));

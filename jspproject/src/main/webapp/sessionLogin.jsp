@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%
-		if(session.getAttribute("member")==null)
+		if(session.getAttribute("member_id")==null)
 		{
 			response.sendRedirect("login.do");
 		}

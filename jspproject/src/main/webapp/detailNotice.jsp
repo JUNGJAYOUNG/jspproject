@@ -23,26 +23,32 @@
 		  <li class="breadcrumb-item"><a href="manager.do">관리자페이지</a></li>
 		  <li class="breadcrumb-item active">공지사항</li>
 	</ol>
-	<!--  
-	제목<textarea rows="10" cols="80" readonly="readonly">${n.notice_title }</textarea><br>
-	내용<textarea rows="10" cols="80" readonly="readonly">${n.notice_content }</textarea><br>
-	 -->
-	
-	<div class="card border-primary mb-3" style="max-width: 60rem;margin: auto">
-	  <div class="card-header">${n.notice_title }</div>
-	  <div class="card-body">
-	    <!-- <h4 class="card-title">${n.notice_title }</h4> -->
-	    <p class="card-text">${content }</p>
+	<br>
+	<br>
+	<br>
+	<br>
+		<div class="card text-white bg-primary mb-3" style="width: 60rem;margin: auto">
+		<input type="hidden" name="qna_no" value="${n.notice_no }">
+		  <div class="card-header">${n.notice_no }</div>
+		  <div class="card-body">
+		    <h4 class="card-title">${n.notice_title }</h4>
+		  </div>
+		</div>
+
+	 <div class="form-group" style="width: 60rem;margin: auto">
+	     <label for="exampleTextarea" class="form-label mt-4"></label>
+	     <textarea class="form-control" id="exampleTextarea" rows="3" name="ans"  maxlength="1000" style="height: 15rem">${content }</textarea>
 	  </div>
-	</div>
+	
 	<br>
 	<div style="width: 15rem;margin: auto;">
 		<button type="submit" class="btn btn-primary" onclick="location.href='updateNotice.do?notice_no=${n.notice_no }'">수정</button>
 		<button type="submit" class="btn btn-primary" onclick="location.href='deleteNotice.do?notice_no=${n.notice_no }'">삭제</button>
 		<button type="submit" class="btn btn-primary" onclick="location.href='notice.do?notice_no=${n.notice_no }'">목록</button>
 	</div>
-
+	<br>
+	<br>
+	<br>
 	<jsp:include page="footer.jsp"/>
-
 </body>
 </html>

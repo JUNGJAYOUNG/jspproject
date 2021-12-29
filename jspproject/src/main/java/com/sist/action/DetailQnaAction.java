@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.NoticeDAO;
 import com.sist.dao.QnaDAO;
@@ -20,10 +21,12 @@ public class DetailQnaAction implements SistAction {
 	public String proRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int qna_no = Integer.parseInt(request.getParameter("qna_no"));
+		
 		QnaVO q = dao.getQna(qna_no);
-		request.setAttribute("q", q);
 		String content = q.getQna_content();
+		
 		content = content.replace("\r\n", "<br>");
+		request.setAttribute("q", q);
 		request.setAttribute("content", content);
 		return "detailQna.jsp";
 	}

@@ -11,6 +11,7 @@ import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.filters.ExpiresFilter.XServletOutputStream;
 
@@ -32,6 +33,11 @@ public class AddBusinessPlaceOKAction implements SistAction {
 	public String proRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = request.getSession();
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		
 		request.setCharacterEncoding("utf-8");
 		String path = request.getRealPath("upload");
 		System.out.println(path);
@@ -95,6 +101,8 @@ public class AddBusinessPlaceOKAction implements SistAction {
 		String info=multi.getParameter("info");
 		int business_type_no=Integer.parseInt(multi.getParameter("business_type_name"));
 		String bp_name=multi.getParameter("bp_name");
+		
+		b.setMember_no(member_no);
 		b.setBp_no(no);
 		b.setBp_name(bp_name);
 		b.setBussiness_type_no(business_type_no);

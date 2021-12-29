@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.BPDAO;
 import com.sist.dao.MemberDAO;
@@ -42,16 +43,20 @@ public class MypageAction implements SistAction {
 			pageNUM4=Integer.parseInt(request.getParameter("pageNUM4"));
 		}
 		
+		HttpSession session = request.getSession();
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		
 
-		ArrayList<ReviewVO> rvlist= dao.getMemberReview(3, pageNUM1);
-		ArrayList<BPVO> fvlist = dao.listMemberFavor(3, pageNUM2);
-		ArrayList<BPVO> bplist = dao.listMemberBP(3, pageNUM3);
-		ArrayList<QnaVO> qnalist = dao.listMemberQna(3, pageNUM4);
+		ArrayList<ReviewVO> rvlist= dao.getMemberReview(member_no, pageNUM1);
+		ArrayList<BPVO> fvlist = dao.listMemberFavor(member_no, pageNUM2);
+		ArrayList<BPVO> bplist = dao.listMemberBP(member_no, pageNUM3);
+		ArrayList<QnaVO> qnalist = dao.listMemberQna(member_no, pageNUM4);
 	
 		for(BPVO v : fvlist) {
 			System.out.println(v.getBp_name());
 		}
-		 
+		
 		request.setAttribute("totalPage1", MemberDAO.totalPage1);
 		request.setAttribute("totalPage2", MemberDAO.totalPage2);
 		request.setAttribute("totalPage3", MemberDAO.totalPage3);

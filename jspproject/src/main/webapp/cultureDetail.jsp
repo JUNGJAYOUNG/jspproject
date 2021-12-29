@@ -32,9 +32,10 @@
 		height: 300px;
 	
 	}
-	#container{
-		width: 80%;
-	}
+	#container {
+	margin: auto;
+	width: 80%;
+}
 
 	p{
 		margin-bottom: 0px;
@@ -102,19 +103,19 @@
 			<h1>시설지원</h1>
 			<table style="width: 90%">
 				<tr>
-					<td><img src="image/${babycar }"></td>	
-					<td><img src="image/${babyinner }"></td>	
-					<td><img src="image/${dotinfo }"></td>	
+					<td><img src="image/${babycar }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${babyinner }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${dotinfo }" style="width:250px;height:250px;"></td>	
 				</tr>
 				<tr>
-					<td><img src="image/${ele }"></td>	
-					<td><img src="image/${parking }"></td>	
-					<td><img src="image/${round }"></td>	
+					<td><img src="image/${ele }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${parking }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${round }" style="width:250px;height:250px;"></td>	
 				</tr>
 				<tr>
-					<td><img src="image/${speaking }"></td>	
-					<td><img src="image/${toliet }"></td>	
-					<td><img src="image/${wheel }"></td>	
+					<td><img src="image/${speaking }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${toliet }" style="width:250px;height:250px;"></td>	
+					<td><img src="image/${wheel }" style="width:250px;height:250px;"></td>	
 				</tr>
 			
 			</table>

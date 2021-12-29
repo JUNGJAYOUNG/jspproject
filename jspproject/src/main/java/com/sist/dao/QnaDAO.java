@@ -13,7 +13,28 @@ import com.sist.vo.QnaVO;
 public class QnaDAO {
 	public static int pageSize = 5;			
 	public static int totalRecord;			
-	public static int totalPage;			
+	public static int totalPage;
+	
+	
+	public int getQnaNo(int no) {
+		int n = 0;
+		String sql = "select qna_no from qna where member_no = ?";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				n = rs.getInt(1);
+			}
+			ConnectionProvider.close(conn,pstmt,rs);
+		}catch (Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return n;
+	}
+	
+	
 	
 	public int getTotalRecord() {
 		int n = 0;
@@ -121,7 +142,7 @@ public class QnaDAO {
 
 	public int insertQna(QnaVO q) {
 		int re =-1;
-		String sql = "insert into qna values (?,?,sysdate,?,null,1,1)";
+		String sql = "insert into qna values (?,?,sysdate,?,null,1,?)";
 		int qna_no = getNextNO();
 		try {
 			Connection conn = ConnectionProvider.getConnection();
@@ -129,6 +150,7 @@ public class QnaDAO {
 			pstmt.setInt(1, qna_no);
 			pstmt.setString(2,q.getQna_title());
 			pstmt.setString(3,q.getQna_content());
+			pstmt.setInt(4, q.getMember_no());
 			re = pstmt.executeUpdate();
 			ConnectionProvider.close(conn, pstmt);
 		}catch (Exception e) {

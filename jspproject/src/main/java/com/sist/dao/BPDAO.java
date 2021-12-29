@@ -15,7 +15,250 @@ import com.sist.db.ConnectionProvider;
 import com.sist.vo.BPVO;
 
 public class BPDAO {
-
+	
+	public ArrayList<BPVO>nameTour(int pageNUM){
+		
+		totalRecord2 = getCulApprovedRecord();
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from ("
+				+ "select business_no,name,image from businessplace "
+				+ "where business_type_no in (1,2,3,4) and register=1 order by name)) "
+				+ "where n between ? and ? order by n";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	
+	public ArrayList<BPVO>locTour(String loc,int pageNUM){
+		
+		totalRecord2 = getCulLocRecord(loc);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from businessplace "
+				+ "where loc like ? || '%' and business_type_no in (1,2,3,4) and register=1)"
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, loc);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public ArrayList<BPVO>holidayTour(String holiday,int pageNUM){
+		
+		totalRecord2 = getCulHolidayRecord(holiday);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from("
+				+ "select rownum n,business_no,name,image from businessplace "
+				+ "where business_no not in "
+				+ "(select business_no from detail where holiday like '%' || ? || '%')"
+				+ "and business_type_no in (1,2,3,4) and register=1)"
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, holiday);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public ArrayList<BPVO>favorTour(int pageNUM){
+		
+		totalRecord2 = getCulFavorRecord();
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name ,image from "
+				+ "(select rownum n,b.business_no,name ,image "
+				+ "from businessplace b, (select business_no,nvl(count(*),0) cnt from favor group by business_no) a "
+				+ "where b.business_no = a.business_no and "
+				+ "business_type_no in (1,2,3,4) order by cnt desc) where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+	}
+	
+	public int searchCntTour(String search) {
+		int re=0;
+		String sql="select count(*)from businessplace "
+				+ "where name like '%' || ? || '%' and "
+				+ "business_type_no in (1,2,3,4) and register=1";
+		try {
+			Connection conn =ConnectionProvider.getConnection();
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				re=rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return re;
+	}
+	
+	public ArrayList<BPVO>listTour(int pageNUM){
+		
+		totalRecord2 = getCulApprovedRecord();
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from "
+				+ "(select rownum n,business_no,name,image from "
+				+ "(select business_no,name,image from businessplace "
+				+ "where business_type_no in (1,2,3,4) and register=1 order by business_no desc)) "
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+		
+	}
+	
+	public ArrayList<BPVO>listSearchTour(String search,int pageNUM){
+		
+		totalRecord2 = searchCntCulture(search);
+		totalPage2 = (int)Math.ceil(totalRecord2/(double)culPageSIZE);
+		System.out.println("전체레코드수:"+totalRecord2);
+		System.out.println("전체페이지수:"+totalPage2);
+		
+		int start = (pageNUM-1)*BPDAO.culPageSIZE+1;
+		int end = start+BPDAO.culPageSIZE-1;
+		System.out.println("s"+start);
+		System.out.println("e"+end);
+		
+		
+		ArrayList<BPVO> list = new ArrayList<BPVO>();
+		String sql="select business_no,name,image from"
+				+ "(select rownum n,business_no,name,image from"
+				+ "(select business_no,name,image from businessplace "
+				+ "where name like '%' || ? || '%' "
+				+ "and business_type_no in (1,2,3,4) and register=1 order by business_no desc)) "
+				+ "where n between ? and ?";
+		try {
+			Connection conn = new ConnectionProvider().getConnection();
+			PreparedStatement pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, search);
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				list.add(new BPVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			e.getMessage();
+			// TODO: handle exception
+		}
+		return list;
+		
+	}
+	
+	
 	//메인화면 추천배프
 	public ArrayList<BPVO> listRecBP(){
 		ArrayList<BPVO> listRecBP = new ArrayList<BPVO>();
@@ -71,7 +314,8 @@ public class BPDAO {
 				+ "from businessplace b, detail d "
 				+ "where b.business_no=d.business_no and "
 				+ "b.business_type_no in (1,2,3,4) and "
-				+ "(b.name like '%'||?||'%' or d.info like '%'||?||'%')";
+				+ "(replace(b.name,' ','') "
+				+ "like '%'||?||'%' or d.info like '%'||?||'%')";
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, keyword);
@@ -236,7 +480,7 @@ public class BPDAO {
 	}
 	public int insertBP(BPVO b) {
 		int re=-1;
-		String sql = "insert into businessplace values(?,?,?,?,sysdate,?,?,?,0,1,1,?)";
+		String sql = "insert into businessplace values(?,?,?,?,sysdate,?,?,?,0,?,1,?)";
 		//int no = getNextNo();
 		try {
 			Connection conn = ConnectionProvider.getConnection();
@@ -248,7 +492,9 @@ public class BPDAO {
 			pstmt.setString(5, b.getSup());
 			pstmt.setString(6, b.getDomain());
 			pstmt.setString(7, b.getImage());
-			pstmt.setInt(8, b.getBussiness_type_no());
+			pstmt.setInt(8, b.getMember_no());
+			pstmt.setInt(9, b.getBussiness_type_no());
+			
 			re=pstmt.executeUpdate();
 			ConnectionProvider.close(conn, pstmt);
 		} catch (Exception e) {

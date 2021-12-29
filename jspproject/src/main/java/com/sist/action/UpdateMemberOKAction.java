@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.MemberDAO;
 import com.sist.vo.MemberVO;
@@ -20,7 +21,9 @@ public class UpdateMemberOKAction implements SistAction {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		MemberVO m = new MemberVO();
-		int member_no=Integer.parseInt(request.getParameter("member_no"));
+		HttpSession session = request.getSession();
+		
+		int member_no = (Integer)session.getAttribute("member_no");
 
 		m.setAddr(request.getParameter("addr"));
 		m.setHobby(request.getParameter("hobby"));

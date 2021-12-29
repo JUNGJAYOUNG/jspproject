@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 			<input type="hidden" name="qna_no" value="${qna_no }">
 			<button type="submit" class="btn btn-primary">삭제</button>
 		</form>
-		<form action="listQna.do" method="post">
+		<form action="mypage.do" method="post">
 			<button type="submit" class="btn btn-primary">취소</button>
 			<!-- 마이페이지로 이동 수정 -->
 		</form>

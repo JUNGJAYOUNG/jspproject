@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -173,9 +174,9 @@ function validation(){
 	  <li class="breadcrumb-item active">회원가입</li>
 	</ol>
 <hr>
-<div class="container">
+<div class="container" style="height:700px;">
 	<h2 class="text-center">회원수정</h2>
-	<div class="col-lg-12 well">
+	<div class="col-lg-12 well" style="width: 60%;margin: auto;">
 	<div class="row">
 		<p class="text-secondary"><b>&nbsp;&nbsp;&nbsp;*은 필수입력 사항입니다.</b></p>
 		<form action="updateMemberOK.do" id="login" name="regForm" method="post" onsubmit="return validation();">
@@ -211,7 +212,7 @@ function validation(){
 				<label>취미</label>
 				<input type="text" name="hobby" id="hobby" class="form-control" value="${m.hobby }">
 			</div>
-			<div class="btn-block" style="position:absolute;top:500px;left:600px;">
+			<div class="btn-block" style="position:absolute;top:550px;left:600px;">
 				<input type="reset" value="취소" class="btn btn-secondary">
 				<input type="submit" value="수정" class="btn btn-primary">
 			</div>
@@ -221,6 +222,7 @@ function validation(){
 </div>
 </div>
 </div>
-	<jsp:include page="footer.jsp"/>
+<br>
+	<!--<jsp:include page="footer.jsp"/> -->
 </body>
 </html>

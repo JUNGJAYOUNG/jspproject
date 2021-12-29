@@ -68,7 +68,6 @@ $(function(){
 <body>
 <jsp:include page="menu.jsp"/>
 <form  action="addNotice.do" method="post">
-	<jsp:include page="menu.jsp"/>
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item active">공지사항</li>
@@ -90,7 +89,7 @@ $(function(){
 	    <tr class="table-primary">
 	     <!-- <th scope="row">Primary</th> --> 
 	      <td>${n.notice_no }</td>
-	      <td><a href="detailNotice.do?notice_no=${n.notice_no }" style="color: white;">${n.notice_title }</a></td>
+	      <td><a href="detailMemberNotice.do?notice_no=${n.notice_no }" style="color: white;">${n.notice_title }</a></td>
 	      <td>${n.notice_date }</td>
 	    </tr>
 	    </c:forEach>
@@ -120,7 +119,7 @@ $(function(){
 	<br>
 	<br>
 	<br>
-	<div style="width:5rem; margin:auto;">
+	<div style="width:10rem; margin:auto;">
 		<c:forEach var="i" begin="1" end="${totalPage }">
 			<a href="notice.do?pageNUM=${i }" style="color: green;">${i }</a>&nbsp;&nbsp;
 		</c:forEach>

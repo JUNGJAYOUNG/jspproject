@@ -57,7 +57,7 @@
 	<c:forEach var="c" items="${searchNotice}">
 	<tr>
 		<td>${c.notice_no}</td>
-		<td>${c.notice_title}</td>
+		<td><a href="detailMemberNotice.do?notice_no=${c.notice_no}">${c.notice_title}</a></td>
 		<td>${c.notice_date}</td>
 	</tr>
 	</c:forEach>
@@ -75,7 +75,7 @@
       <div class="swiper-wrapper">
   		<c:forEach var="c" items="${searchTourByMain}">
         <div class="swiper-slide">
-        	<a href="#?bp_no=${c.bp_no}"><img src="image/${c.image}"></a>
+        	<a href="tourDetail.do?no=${c.bp_no}"><img src="upload/${c.image}"></a>
         	<p>${c.bp_name}</p>
         </div>
       	</c:forEach>
@@ -97,7 +97,7 @@
       <div class="swiper-wrapper">
   		<c:forEach var="c" items="${searchCulture}">
         <div class="swiper-slide">
-        	<a href="#?bp_no=${c.bp_no}"><img src="image/${c.image}"></a>
+        	<a href="cultureDetail.do?no=${c.bp_no}"><img src="upload/${c.image}"></a>
         	<p>${c.bp_name}</p>
         </div>
       	</c:forEach>

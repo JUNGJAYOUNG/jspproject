@@ -15,8 +15,9 @@ body {
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
+  margin: auto;
   margin-top: 120px;
-  max-width: 600px;
+  max-width: 330px;
   height: 320px;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
@@ -96,7 +97,6 @@ function validation(){
 	  <li class="breadcrumb-item active">비밀번호 수정</li>
 	</ol>
 <div id="login">
-	<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;비밀번호 수정
 	<div class="container">
 	 <div id="login-row" class="row justify-content-center align-items-center">
       	<div id="login-column" class="col-md-6">
@@ -118,7 +118,8 @@ function validation(){
 			</div>
 			</div>
 		</div>			
-	</div>			
-	<jsp:include page="footer.jsp"/>
+	</div>	
+	<br><br><br>
+	<jsp:include page="footer.jsp"/>		
 </body>
 </html>

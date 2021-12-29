@@ -8,16 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+   
 <%
-	String id = request.getParameter("id");
-	String pwd = request.getParameter("pwd");
+/*
+	String member_id = request.getParameter("member_id");
+	String pwd = request.getParameter("member_pwd");
 	MemberDAO dao = new MemberDAO();
 	if(dao.login(id,pwd)){
-		session.setAttribute("member", "yes");
-		response.sendRedirect("main.jsp");
+		session.setAttribute("member_no", member_no);
+		response.sendRedirect("main.do");
 	}else{
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("login.do");
 	}
+*/
 %>
+
 </body>
 </html>

@@ -15,6 +15,27 @@ public class MemberDAO {
 	public static int totalRecord;		//전체 레코드의 수
 	public static int totalPage;		//전체 페이지의 수
 	
+	//멤버아이디 받아서 멤버번호 반환하는 메소드
+		public int getMemberNo(String member_id) {
+			int n = 0;
+			String sql = "select member_no from member where member_id = ?";
+		
+			try {
+				Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, member_id);
+				
+				ResultSet rs = pstmt.executeQuery();
+				if(rs.next()) {
+					n = rs.getInt(1);
+				}
+				ConnectionProvider.close(conn, pstmt);
+			}catch(Exception e) {
+				System.out.println("예외발생:"+e.getMessage());
+			}
+			return n;
+		}
+	
 	//전체 레코드의 수를 반환하는 메소드
 	public int getTotalRecord() {
 		int n = 0;

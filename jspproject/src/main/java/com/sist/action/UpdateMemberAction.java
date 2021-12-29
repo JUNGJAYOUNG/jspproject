@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.MemberDAO;
 import com.sist.vo.MemberVO;
@@ -21,7 +22,11 @@ public class UpdateMemberAction implements SistAction {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String viewPage="";
-		int member_no=Integer.parseInt(request.getParameter("member_no"));
+		
+		HttpSession session = request.getSession();
+		
+		int member_no = (Integer)session.getAttribute("member_no");
+		
 		MemberVO m= dao.getMember(member_no);
 		request.setAttribute("m", m);
 		return "updateMember.jsp";
