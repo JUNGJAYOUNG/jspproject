@@ -14,13 +14,12 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;문의사항&nbsp;&nbsp;>&nbsp;&nbsp;문의사항 삭제</h3>
-	<br>
-	<br>
 
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item"><a href="listQna.do">문의사항</a></li>
+	  <li class="breadcrumb-item active">문의사항 삭제</li>
+	</ol>
 	<div class="card text-white bg-primary mb-3" style="max-width: 60rem;margin: auto;">
 	  <div class="card-header">문의사항 번호: ${qna_no }</div>
 	  <div class="card-body">
@@ -47,6 +46,8 @@
 			<!-- 마이페이지로 이동 수정 -->
 		</form>
 	</div>
-<jsp:include page="footer.jsp"/> 
+
+	<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

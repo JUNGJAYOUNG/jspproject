@@ -15,7 +15,7 @@ footer{
 	height: 200px;
 	display: inline-block;
 	position: relative;
-	bottom: 0;
+	
 }
 .footer_box{
 	background-image: url("../image/bg.png");
@@ -45,29 +45,31 @@ footer{
 	clear:both;
 	text-align: center;
     width: 100%;
+    background-color: #20c997;
 }
-.footer_copyright p{
-	background-color: #20c997;
-}
+
 </style>
 </head>
 <body>
 <footer>
-	<div class="footer_box" style='background: url("image/bg.png") no-repeat center; 	background-size: 100% 100%;'>
-		<div class="footer_logo">
-		<img src="image/logo.png" width="200px;" height="200px;">
-		</div>
-		<div class="footer_addr">
-			<ul>
-				<li>서울특별시 마포구 서교동 쌍용교육센터</li>
-				<li>010-1234-1234</li>
-			</ul>
-		</div>
+	<div class="footer_box" style='background: url("image/bg.png") no-repeat center; 	background-size: 100% 80%;'>
+		
+			<div class="footer_logo">
+			<img src="image/logo.png" width="200px;" height="200px;">
+			</div>
+			<div class="footer_addr">
+				<ul>
+					<li>서울특별시 마포구 서교동 쌍용교육센터</li>
+					<li>010-1234-1234</li>
+				</ul>
+			</div>
+	
 		<div class="footer_copyright">
 		<p>Copyright &copy; 2021 배프랑놀자 
-	                            | All right reserved</p>
+	                            | All right reserved</p> 
 		</div>
 	</div>
+	
 </footer>
 	
 </body>

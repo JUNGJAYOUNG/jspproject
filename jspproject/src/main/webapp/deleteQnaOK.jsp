@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <%
 response.sendRedirect("listQna.do");
 %>
 <a href="listQna.do">문의사항 목록</a>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -14,12 +14,11 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;공지사항&nbsp;&nbsp;>&nbsp;&nbsp;공지사항 삭제</h3>
-	<br>
-	<br>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item"><a href="main.do">공지사항</a></li>
+	  <li class="breadcrumb-item active">공지사항 삭제</li>
+	</ol>
 
 	<div class="card text-white bg-primary mb-3" style="max-width: 60rem;margin: auto;">
 	  <div class="card-header">공지사항 번호: ${notice_no }</div>
@@ -37,6 +36,8 @@
 		<button type="submit" class="btn btn-primary">취소</button>
 	</form>
 	</div>
-<jsp:include page="footer.jsp"/>
+
+	<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

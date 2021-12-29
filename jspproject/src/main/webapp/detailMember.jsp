@@ -83,8 +83,15 @@ h2 {
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <% request.setCharacterEncoding("utf-8"); %>
 <a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;관리자페이지&nbsp;&nbsp;>&nbsp;&nbsp;회원관리&nbsp;&nbsp;>&nbsp;&nbsp;상세정보
+<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item"><a href="manager.do">관리자페이지</a></li>
+	  <li class="breadcrumb-item"><a href="listMember.do">회원관리</a></li>
+	  <li class="breadcrumb-item active">상세정보</li>
+</ol>
 <hr>
 <div class="container">
 	<h2 class="text-center">회원상세정보</h2>
@@ -131,5 +138,6 @@ h2 {
 </div>
 </div>
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

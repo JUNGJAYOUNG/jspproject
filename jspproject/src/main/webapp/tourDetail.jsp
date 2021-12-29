@@ -47,6 +47,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<div style="position: relative;">
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
@@ -65,6 +66,7 @@
 				<p>도메인 : ${b.domain }</p>
 
 				<p id="loc" >${b.loc }</p>
+
 				<p>전화번호 : ${b.bp_tel }</p>
 			</div>
 		</div>
@@ -210,7 +212,7 @@
 			</div>
 		 <br>
 		 <br>
-
+<jsp:include page="footer.jsp"/>
 </div>
 </body>
 </html>

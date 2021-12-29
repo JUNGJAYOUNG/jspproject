@@ -14,14 +14,12 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;문의사항 확인</h3>
-	<br>
-	<br>
-	<br>
-	<br>
+
+	<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+		  <li class="breadcrumb-item active">문의사항 확인</li>
+	</ol>
+
 	<div class="card mb-3" style="width: 60rem;margin: auto;">
 	  <h3 class="card-header"><span class="badge bg-primary">제목</span>     ${q.qna_title }</h3>
 
@@ -39,6 +37,8 @@
 			<button type="submit" class="btn btn-primary">삭제</button>
 		</div>
 	</form>
-<jsp:include page="footer.jsp"/> 
+
+	<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

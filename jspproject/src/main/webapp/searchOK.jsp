@@ -1,3 +1,5 @@
+<%@page import="com.sist.dao.NoticeDAO"%>
+<%@page import="com.sist.dao.BPDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,31 +8,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/searchOK.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
 
 </head>
+<%
+	BPDAO dao = new BPDAO();
+	int cnt1 = dao.cntSearchTourByMain(request.getParameter("keyword"));
+	int cnt2 = dao.cntSearchCultureByMain(request.getParameter("keyword"));
+	NoticeDAO ndao = new NoticeDAO();
+	int cnt = ndao.cntSearchNotice(request.getParameter("keyword"));
+%>
 <jsp:include page="menu.jsp"/>
-<body>
-<form action="searchOK.do">
-		<input type="search" name="keyword" placeholder="검색어를 입력하세요">
-		<input type="hidden" name="keyword">
-		<input type="submit" value="검색">
-</form>
-<hr>
-<div>
-<div>
 
+<body>
+<h3>
+	<img src="image/blank.png">
+	<a>
+	<img src="image/home.png">
+	</a>
+	&nbsp;&nbsp;>&nbsp;&nbsp;통합검색
+</h3>
+
+<div class="form-wrapper">
+		<form action="searchOK.do" >
+			<input type="search" name="keyword" placeholder="검색어를 입력하세요">
+			<input type="hidden" name="keyword">
+			<input class="btn-success" type="submit" value="검색">
+		</form>
 </div>
-</div>
-<h2>공지사항검색결과</h2>
+<h2>총 <%=cnt+cnt1+cnt2%>건의 검색결과가 있습니다</h3>
+<hr>
+
+<div class="notice-wrapper">
+
+<h2>공지사항검색결과(<%=cnt%>건)</h2>
 <div class="container">
-<table border="1">
-	<thead >
-	<tr>
+<table class="table table-hover">
+	<thead>
+	<tr class="table-primary">
 		<td>게시판번호</td>
 		<td>제목</td>
 		<td>작성일</td>
@@ -49,46 +66,62 @@
 </table>
 </div>
 
-<h2>관광검색결과</h2>
-<table border="1">
-	<thead>
-	<tr>
-		<td>게시판번호</td>
-		<td>제목</td>
-		<td>작성일</td>
-	</tr>
-	</thead>
-	<tbody>
-	<c:forEach var="c" items="${searchTourByMain}">
-	<tr>
-		<td>${c.bp_no}</td>
-		<td>${c.bp_name}</td>
-		<td>${c.image}</td>
-	</tr>
-	</c:forEach>
-	</tbody>
+</div>
 
-</table>
-<h2>문화검색결과</h2>
-<table border="1">
-	<thead>
-	<tr>
-		<td>게시판번호</td>
-		<td>제목</td>
-		<td>작성일</td>
-	</tr>
-	</thead>
-	<tbody>
-	<c:forEach var="c" items="${searchCulture}">
-	<tr>
-		<td>${c.bp_no}</td>
-		<td>${c.bp_name}</td>
-		<td>${c.image}</td>
-	</tr>
-	</c:forEach>
-	</tbody>
+<hr>
+<h2>관광검색결과(<%=cnt1%>건)</h2>
 
-</table>
+ <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+  		<c:forEach var="c" items="${searchTourByMain}">
+        <div class="swiper-slide">
+        	<a href="#?bp_no=${c.bp_no}"><img src="image/${c.image}"></a>
+        	<p>${c.bp_name}</p>
+        </div>
+      	</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      
+  </div>
+
+
+
+<br>
+<br>
+<hr>
+
+<h2>문화검색결과(<%=cnt2%>건)</h2>
+
+<div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+  		<c:forEach var="c" items="${searchCulture}">
+        <div class="swiper-slide">
+        	<a href="#?bp_no=${c.bp_no}"><img src="image/${c.image}"></a>
+        	<p>${c.bp_name}</p>
+        </div>
+      	</c:forEach>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      
+  </div>
+
+<br>
+<br>
+
 <jsp:include page="footer.jsp"/>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+</script>
 </body>
 </html>

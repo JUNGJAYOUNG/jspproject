@@ -20,14 +20,10 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;문의사항 관리</h3>
-	<br>
-	<br>
-	<br>
-	<br>
+<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">문의사항</li>
+	</ol>
 	
 	<div>
 	<table class="table table-hover">
@@ -61,6 +57,8 @@
 	</div>
 	<br>
 
-<jsp:include page="footer.jsp"/> 
+	
+	<jsp:include page="footer.jsp"/>
+
 </body>
 </html>

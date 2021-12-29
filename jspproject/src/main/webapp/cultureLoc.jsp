@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
 
@@ -49,6 +54,7 @@
 	
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <hr>
 <%String loc=request.getParameter("loc"); %>
 <div id="container">
@@ -79,19 +85,19 @@
           <a class="nav-link" href="cultureName.do">이름순</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">영업일</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">영업일</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=월">월요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=화">화요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=수">수요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=목">목요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=금">금요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=토">토요일</a>
-            <a class="dropdown-item" href="cultureHolyday.do?holiday=일">일요일</a>
+ 			<a class="dropdown-item" href="cultureHoliday.do?holiday=월">월요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=화">화요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=수">수요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=목">목요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=금">금요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=토">토요일</a>
+            <a class="dropdown-item" href="cultureHoliday.do?holiday=일">일요일</a>
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">지역순</a>
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">지역순</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="cultureLoc.do?loc=서울">서울</a>
             <a class="dropdown-item" href="cultureLoc.do?loc=부산">부산</a>
@@ -146,5 +152,6 @@
 	</div>		
 
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

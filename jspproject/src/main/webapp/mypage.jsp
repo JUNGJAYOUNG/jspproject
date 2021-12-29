@@ -30,6 +30,7 @@
 </head>
 
 <body>
+<jsp:include page="menu.jsp"/>
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item active">마이페이지</li>
@@ -124,7 +125,7 @@
 			<c:forEach var="q" items="${qnalist }">
 				<tr>
 					<td>${q.rownum}</td>
-					<td>${q.qna_title }</td>
+					<td><a href="#detailQna.do?member_no=${member_no }">${q.qna_title }</a></td>
 					<td>${q.qna_date }</td>
 				</tr>
 			</c:forEach>
@@ -140,9 +141,10 @@
 		<br>
 		&nbsp;&nbsp;<label>회원정보 수정&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;회원탈퇴</label>
 		<div>
-		<button class="btn btn-primary" onclick="location.href='#'">회원정보 수정</button>
+		<button class="btn btn-primary" onclick="location.href='deleteMember.do'">회원정보 수정</button>
 		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-		<button class="btn btn-primary" onclick="location.href='#'">회원 탈퇴</button>
+		<button class="btn btn-primary" onclick="location.href='deleteMember.do'">회원 탈퇴</button>
 		</div>
+		<jsp:include page="footer.jsp"/>
 </body>
 </html>

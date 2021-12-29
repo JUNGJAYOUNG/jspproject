@@ -174,67 +174,46 @@ function validation(){
 	</ol>
 <hr>
 <div class="container">
-	<h2 class="text-center">회원가입</h2>
+	<h2 class="text-center">회원수정</h2>
 	<div class="col-lg-12 well">
 	<div class="row">
 		<p class="text-secondary"><b>&nbsp;&nbsp;&nbsp;*은 필수입력 사항입니다.</b></p>
-		<form action="joinOK.do" id="login" name="regForm" method="post" onsubmit="return validation();">
+		<form action="updateMemberOK.do" id="login" name="regForm" method="post" onsubmit="return validation();">
 		<div class="col-sm-12">
 			<div class="row">
 			<div class="form-group">
-				&nbsp;&nbsp;&nbsp;&nbsp;<label>*아이디</label>
-				<input type="text" name="member_id" id="member_id" readonly class="form-control" style="width:300px;display:inline;">
-				<button type="button" value="중복확인" onclick="idCheck()" class="btn btn-primary" style="display:inline;">중복확인</button>
-			</div>
-			<div class="col-sm-6 form-group">	
-				<label>*비밀번호</label>
-				<input type="password" name="member_pwd" id="member_pwd" class="form-control">
-			</div>
-			<div class="col-sm-6 form-group">
-				<label>*비밀번호 확인</label>
-				<input type="password" name="pwdcheck" id="pwdcheck" class="form-control">
-			</div>
 			<div class="col-sm-6 form-group">
 				<label>*이름</label>
-				<input type="text" name="member_name" id="member_name" class="form-control">
+				<input type="text" name="member_name" id="member_name" class="form-control" value="${m.member_name }" readonly>
 			</div>
 			<div class="col-sm-6 form-group">
 				<label>생년월일</label><br>
-				<select name="yy" id="year" class="form-control" style="width:90px;display:inline;"></select>년
-				<select name="mm" id="month" class="form-control" style="width:70px;display:inline;"></select>월
-				<select name="dd" id="day" class="form-control" style="width:70px;display:inline;"></select>일
+				<input type="text" name="birth" id="birth" class="form-control" value="${m.birth }" readonly>
 			</div>
 			<div class="col-sm-6 form-group">
 				<label>성별</label>
-				<input type="radio" name="gender" id="gender" value="남" checked style="width:90px;">남	
-				<input type="radio" name="gender" id="gender" value="여" style="width:90px;">여<br>
+				<input type="text" name="gender" id="gender" class="form-control" value="${m.gender }" readonly>
 			</div>
 			<div class="col-sm-6 form-group">
 				<label>*전화번호</label><br>
-				<select name="tel1" id="tel1" class="form-control" style="width:90px;display:inline;">
-						<option value="010">010</option>
-						<option value="02">02</option>
-						<option value="031">031</option>
-						<option value="051">051</option>
-				</select>-
-				<input type="text" name="tel2" id="tel2" maxlength="4" class="form-control" style="width:90px;display:inline;">-
-				<input type="text" name="tel3" id="tel3" maxlength="4" class="form-control" style="width:90px;display:inline;"><br>
+				<input type="text" name="tel" id="tel" class="form-control" value="${m.member_tel }" readonly>
+				
 			</div>
 			<div class="form-group" style="margin-left:15px;margin-right:10px;">
 				<label>주소</label>
-				<input type="text" name="addr" id="addr" class="form-control" style="width:500px;">
+				<input type="text" name="addr" id="addr" class="form-control" style="width:500px;" value="${m.addr }">
 			</div>
 			<div class="col-sm-6 form-group">
 				<label>이메일</label>
-				<input type="text" name="email" id="email" class="form-control">
+				<input type="text" name="email" id="email" class="form-control" value="${m.email }">
 			</div>
 			<div class="col-sm-6 form-group">
 				<label>취미</label>
-				<input type="text" name="hobby" id="hobby" class="form-control">
+				<input type="text" name="hobby" id="hobby" class="form-control" value="${m.hobby }">
 			</div>
 			<div class="btn-block" style="position:absolute;top:500px;left:600px;">
 				<input type="reset" value="취소" class="btn btn-secondary">
-				<input type="submit" value="가입" class="btn btn-primary">
+				<input type="submit" value="수정" class="btn btn-primary">
 			</div>
 	</div>
 	</div>

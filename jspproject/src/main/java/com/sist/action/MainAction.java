@@ -29,10 +29,11 @@ public class MainAction implements SistAction {
 		// TODO Auto-generated method stub
 		ArrayList<NoticeVO> listNotice = ndao.listNotice();
 		System.out.println("공지사항개수:"+listNotice.size());
+		
 		request.setAttribute("listNotice", listNotice);
 		
 		ArrayList<BPVO> listRecBP = dao.listRecBP();
-		System.out.println("추천배프개수:"+listRecBP.size());
+		System.out.println("추천배프개수:"+listRecBP.size());	
 		request.setAttribute("listRecBP", listRecBP);
 		
 		ArrayList<BPVO> listCultureNow = dao.listCultureNow();
