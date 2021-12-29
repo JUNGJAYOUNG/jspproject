@@ -90,6 +90,11 @@ function validation(){
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">비밀번호 수정</li>
+	</ol>
 <div id="login">
 	<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;비밀번호 수정
 	<div class="container">
@@ -114,5 +119,6 @@ function validation(){
 			</div>
 		</div>			
 	</div>			
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

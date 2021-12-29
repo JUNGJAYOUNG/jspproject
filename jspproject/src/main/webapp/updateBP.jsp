@@ -159,6 +159,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item active">배프사업장 수정</li>
@@ -291,5 +292,6 @@
 			
 		</form>
 	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -44,6 +44,7 @@ function pro(){
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <div id="container">
 <hr>
 	<% String search = (String)request.getAttribute("search"); %>
@@ -145,5 +146,6 @@ function pro(){
 	</div>		
 
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

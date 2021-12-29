@@ -16,14 +16,13 @@
 </style>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</h3>
-	<br>
-	<br>
-	<br>
-	<br>
+<jsp:include page="menu.jsp"/>
+
+	<ol class="breadcrumb">
+		  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+		  <li class="breadcrumb-item"><a href="manager.do">관리자페이지</a></li>
+		  <li class="breadcrumb-item active">공지사항</li>
+	</ol>
 	<!--  
 	제목<textarea rows="10" cols="80" readonly="readonly">${n.notice_title }</textarea><br>
 	내용<textarea rows="10" cols="80" readonly="readonly">${n.notice_content }</textarea><br>
@@ -43,5 +42,6 @@
 		<button type="submit" class="btn btn-primary" onclick="location.href='deleteNotice.do?notice_no=${n.notice_no }'">삭제</button>
 		<button type="submit" class="btn btn-primary" onclick="location.href='notice.do?notice_no=${n.notice_no }'">목록</button>
 	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

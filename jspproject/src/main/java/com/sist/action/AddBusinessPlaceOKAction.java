@@ -127,7 +127,8 @@ public class AddBusinessPlaceOKAction implements SistAction {
 			viewPage="addBusinessPlaceOK.jsp";
 		}
 		else {
-			viewPage="a.jsp";
+			viewPage = "error.jsp";
+			request.setAttribute("msg", "사업장 등록에 실패");
 		}
 		return viewPage;
 	}

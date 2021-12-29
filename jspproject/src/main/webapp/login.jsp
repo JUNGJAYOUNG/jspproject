@@ -84,6 +84,11 @@ body {
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">로그인</li>
+	</ol>
 <div id="login">
 	<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;로그인
 	<div class="container">
@@ -114,5 +119,6 @@ body {
 		</div>				
 	</div>
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -10,10 +10,12 @@
 </style>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;문의사항&nbsp;&nbsp;>&nbsp;&nbsp;문의사항 등록</h3>
+<jsp:include page="menu.jsp"/>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item"><a href="listQna.do">문의사항</a></li>
+	  <li class="breadcrumb-item active">문의사항 등록</li>
+	</ol>
 	<br>
 	<br>
 	
@@ -29,5 +31,6 @@
 	    	<button type="submit" class="btn btn-primary" style="width: 10rem;margin: auto;">등록</button>
 	    </div>
     </form>
+    <jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -159,6 +159,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item active">배프사업장등록</li>
@@ -208,7 +209,7 @@
 						  <option value='9'>경기</option>
 						  <option value='10'>경남</option>
 						  <option value='11'>경북</option>
-						  <option value='12' >전남</option>
+						  <option value='12'>전남</option>
 						  <option value='13'>전북</option>
 						  <option value='14'>제주</option>
 						  <option value='15'>충남</option>
@@ -287,5 +288,6 @@
 			
 		</form>
 	</div>
+	    <jsp:include page="footer.jsp"/>
 </body>
 </html>

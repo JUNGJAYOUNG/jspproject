@@ -28,7 +28,7 @@ public class NoticeAction implements SistAction {
 		String keyword = request.getParameter("keyword");
 		
 		//System.out.println("searchColum:"+searchColum); 
-		//System.out.println("keyword:"+keyword); 
+		System.out.println("keyword:"+keyword); 
 		
 		if(keyword == null && session.getAttribute("keyword")!=null) {
 			searchColum = (String)session.getAttribute("searchColum");

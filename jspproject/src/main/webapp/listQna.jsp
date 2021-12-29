@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -66,5 +67,6 @@
 	<form action="detailQna.do?qna_no=2" method="post">
 		<button type="submit" class="btn btn-primary">문의사항 확인(마이페이지로 이동)</button>
 	</form>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>
