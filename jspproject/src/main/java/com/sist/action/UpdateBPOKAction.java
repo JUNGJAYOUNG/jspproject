@@ -130,12 +130,12 @@ public class UpdateBPOKAction implements SistAction {
 
 		String viewPage="";
 		if(re3==2) {
-			viewPage="updateBPOK.jsp";
+			viewPage="updateBP.do";
 			 if(fname!=null&&!fname.equals("")&&oldFname!=null&&!oldFname.equals("")) {
 			 File file = new File(path+"/"+oldFname); file.delete(); }
 			 
 		}else {
-			viewPage="c.jsp";
+			viewPage = "error.jsp";
 			request.setAttribute("msg", "게시물수정에 실패하였습니다.");
 		}
 		return viewPage;

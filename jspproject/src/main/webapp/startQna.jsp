@@ -8,10 +8,8 @@
 
 </head>
 <body>
-
 <a href="listQna.do" >QNA</a>
 <a href="notice.do" >Notice</a>
-<a href="culture.do" >문화</a>
-
+<a href="tourDetail.do?no=9">관광상세</a>
 </body>
 </html>

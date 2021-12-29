@@ -35,7 +35,7 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="menu.jsp"/>
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item"><a href="manager.do">관리자페이지</a></li>
@@ -107,5 +107,6 @@
 			<%-- <td><a href="updateBP.do?no=${b.bp_no }"><input type="button" value="수정" class="btn btn-primary"></a></td> --%>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

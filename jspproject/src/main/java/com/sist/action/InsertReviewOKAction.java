@@ -26,7 +26,8 @@ public class InsertReviewOKAction implements SistAction {
 		if(re==1) {
 			viewPage="cultureDetail.do?no="+no;
 		}else {
-			viewPage="c.jsp";
+			viewPage = "error.jsp";
+			request.setAttribute("msg", "리뷰 등록에 실패");
 		}
 		return viewPage;
 	}

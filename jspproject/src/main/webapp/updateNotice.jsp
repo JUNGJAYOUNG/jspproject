@@ -11,26 +11,28 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;공지사항&nbsp;&nbsp;>&nbsp;&nbsp;공지사항 수정</h3>
-	<br>
-	<br>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item"><a href="notice.do">공지사항</a></li>
+	  <li class="breadcrumb-item active">공지사항 수정</li>
+	</ol>
 	
 	<form action="updateNoticeOK.do" method="post" id="f" style="width: 60rem; margin: auto;">
 		<input type="hidden" name="notice_no" value="${n.notice_no }">
 		<div class="form-group">
 	      <label for="exampleTextarea" class="form-label mt-4">제목</label>
-	      <textarea class="form-control" id="notice_title" rows="3" name="notice_title">${n.notice_title }</textarea><br>
+	      <textarea class="form-control" id="notice_title" rows="3" name="notice_title"  maxlength="30">${n.notice_title }</textarea><br>
 	      <label for="exampleTextarea" class="form-label mt-4">내용</label>
-	      <textarea class="form-control" id="notice_content" rows="10"name="notice_content">${n.notice_content }</textarea><br>
+	      <textarea class="form-control" id="notice_content" rows="10"name="notice_content"  maxlength="1000">${n.notice_content }</textarea><br>
 	    	<div style="width: 10rem;margin: auto;">
 		    	<button type="submit" class="btn btn-primary">수정</button>
 		    	<button type="submit" class="btn btn-primary" onclick="location.href='notice.do'">취소</button>
 		    </div>
 	    </div>
     </form>
-	
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

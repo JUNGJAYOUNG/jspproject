@@ -122,25 +122,38 @@ public class NoticeDAO {
 	}
 	
 	//전체 레코드 수 반환 메소드
-	public int getTotalRecord() {
-		int n = 0;
-		String sql = "select count(*) from notice";
-		try {
-			Connection conn = ConnectionProvider.getConnection();
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			if(rs.next()) {
-				n = rs.getInt(1);
+	public int getTotalRecord(String searchColum,String keyword) {
+        int n = 0;
+        String sql = "select count(*) from notice ";
+        
+        if(keyword != null) {
+			
+			if(searchColum.equals("notice_date")) {
+				sql += "where notice_date = '"+keyword+"'";
+			}else {
+				sql += " where " + searchColum + " like '%"+keyword+"%'";
+				System.out.println("searchColum:"+searchColum);
+				System.out.println("keyword:"+keyword);
 			}
-			ConnectionProvider.close(conn,stmt,rs);
-		}catch (Exception e) {
-			System.out.println("예외발생:"+e.getMessage());
 		}
-		return n;
-	}
+        
+        try {
+            Connection conn = ConnectionProvider.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()) {
+                n = rs.getInt(1);
+            }
+
+            ConnectionProvider.close(conn, stmt,rs);
+        }catch (Exception e) {
+            System.out.println("예외발생:"+e.getMessage());
+        }
+        return n;
+    }
 	
 	public ArrayList<NoticeVO> listNotice(int pageNUM, String searchColum, String keyword){
-		totalRecord = getTotalRecord();
+		totalRecord = getTotalRecord(searchColum,keyword);
 		totalPage = (int)Math.ceil(totalRecord/(double)pageSize);
 		
 		int start = (pageNUM-1) * NoticeDAO.pageSize +1;

@@ -27,9 +27,10 @@ public class DeleteBPAction implements SistAction {
 		int re3 = re1+re2;
 		String viewPage="";
 		if(re3==2) {
-			viewPage="deleteBP.jsp";
+			viewPage="manageBusiness.do";
 		}else {
-			viewPage="c.jsp";
+			viewPage = "error.jsp";
+			request.setAttribute("msg", "사업장 등록에 실패했습니다.");
 			
 		}
 		return viewPage;

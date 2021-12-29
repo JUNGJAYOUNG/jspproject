@@ -55,6 +55,15 @@ public class BPVO {
 	}
 	
 
+	public BPVO(int bp_no, String bp_name) {
+		super();
+		this.bp_no = bp_no;
+		this.bp_name = bp_name;
+	}
+	public BPVO(String bussniee) {
+		super();
+	}
+
 	public BPVO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -74,6 +83,7 @@ public class BPVO {
 		this.bp_name = bp_name;
 		this.bp_no = bp_no;
 	}
+
 	public BPVO(int bp_no, String bp_name, String image, int rownum) {
 		super();
 		this.bp_no = bp_no;
@@ -165,6 +175,7 @@ public class BPVO {
 	public void setBusiness_type_name(String business_type_name) {
 		this.business_type_name = business_type_name;
 	}
+
 	public int getRownum() {
 		return rownum;
 	}

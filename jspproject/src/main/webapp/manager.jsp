@@ -27,17 +27,13 @@
         }
 </style>
 </head>
-<jsp:include page="menu.jsp"/>
 <body>
-<br>
-<h3>
-	<img src="image/blank.png">
-	<a>
-	<img src="image/home.png">
-	</a>
-	&nbsp;&nbsp;>&nbsp;&nbsp;관리자페이지
-</h3>
+<jsp:include page="menu.jsp"/>
 
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">관리자페이지</li>
+	</ol>
 
 	<div class="cardBox">
 		<div class="card"><a></a>
@@ -58,5 +54,6 @@
 		</div>	
 	</div>
 <jsp:include page="footer.jsp"/>
+
 </body>
 </html>

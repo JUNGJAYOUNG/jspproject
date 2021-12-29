@@ -51,13 +51,13 @@
 	<div style="position: relative;">
 	<ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
-	  <li class="breadcrumb-item"><a href="culture.do">문화배프</a></li>
-	  <li class="breadcrumb-item active">문화상세</li>
+	  <li class="breadcrumb-item"><a href="tour.do">관광배프</a></li>
+	  <li class="breadcrumb-item active">관광상세</li>
 	</ol>
 </div>
 
 <div id="container">
-		<div style="float: right; margin-bottom: 10px;"><button onclick="location.href='clickFavor.do?no=${b.bp_no}'" ><img src="image/${image }" ></button>${cntfavor }</div> 
+		<div style="float: right; margin-bottom: 10px;"><button onclick="location.href='clickTourFavor.do?no=${b.bp_no}'" ><img src="image/${image }" ></button>${cntfavor }</div> 
 		<div id="back">
 			<div id="info">
 				<span style="font-weight: bold; font-size: 32px; ">${b.bp_name }</span>
@@ -65,7 +65,7 @@
 				<p style="font-size: 24px;">${d.info }</p>
 				<p>도메인 : ${b.domain }</p>
 
-				<p id="loc">${b.loc }</p>
+				<p id="loc" class="bottom">${b.loc }</p>
 				<p>전화번호 : ${b.bp_tel }</p>
 			</div>
 		</div>
@@ -78,22 +78,25 @@
 					<td>${d.holiday }</td>
 				</tr>
 				<tr>
-					<th class="table-success">상영시간</th>
+					<th class="table-success">영업시간</th>
 					<td>${d.time }</td>
 				</tr>
+				<!-- 
 				<tr>
 					<th class="table-success">운영기간</th>
 					<td>${d.start_date }~${d.end_date }</td>
 				</tr>	
+				 -->
 				<tr>	
-					<th class="table-success">요금</th>
+					<th class="table-success">입장료</th>
 					<td>${d.fee }</td>
 				</tr>
+				<!-- 
 				<tr>
 					<th class="table-success">주체</th>	
 					<td>${d.company }</td>
 				</tr>
-			
+				 -->
 			</table>
 		
 		</div>
@@ -203,13 +206,12 @@
 		 <br>
 		 <div class="page">
 				<c:forEach var="i" begin="1" end="${totalPage }">
-				<a href="cultureDetail.do?no=${b.bp_no }&pageNUM=${i }">${i }</a>&nbsp;&nbsp;
+				<a href="tourDetail.do?no=${b.bp_no }&pageNUM=${i }">${i }</a>&nbsp;&nbsp;
 				</c:forEach>
 			</div>
 		 <br>
 		 <br>
 
 </div>
-<jsp:include page="footer.jsp"/>
 </body>
 </html>

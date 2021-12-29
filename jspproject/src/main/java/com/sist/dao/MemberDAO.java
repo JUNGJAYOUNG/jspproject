@@ -247,6 +247,25 @@ public class MemberDAO {
 		}
 		return m;
 	}
+	public int updateMember(MemberVO m) {
+		int re=-1;
+		String sql = "update member set addr=?, hobby=?,email=? where member_no=?";
+		//int no = getNextNo();
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getAddr());
+			pstmt.setString(2, m.getHobby());
+			pstmt.setString(3, m.getEmail());
+			pstmt.setInt(4, m.getMember_no());
+			re=pstmt.executeUpdate();
+			ConnectionProvider.close(conn, pstmt);
+		} catch (Exception e) {
+			e.getMessage();// TODO: handle exception
+		}
+	
+		return re;
+	}
 	
 	////ÇöÈ£
 	public static int pageSIZE=5;

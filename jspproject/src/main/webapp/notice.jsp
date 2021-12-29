@@ -1,18 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<%
-	String notice_no = request.getParameter("notice_no");
-%>
-<%=notice_no %>
-=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -80,15 +67,17 @@ $(function(){
 </head>
 <body>
 <form  action="addNotice.do" method="post">
+	<jsp:include page="menu.jsp"/>
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">공지사항</li>
+	</ol>
 	<br>
-	<br>
-	<br>
-	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;공지사항</h3>
-	<br>
-	<br>
-	<br>
-	<br>
-	
+
+	<%
+	String notice_no = request.getParameter("notice_no");
+	%>
+<%=notice_no %>
 	<div style="width: 60rem;margin: auto;">
 	<table class="table table-hover">
 	  <thead>
@@ -118,7 +107,7 @@ $(function(){
 	<br>
 	</form>	
 	
-	<form name="f" action="notice.do" method="post" class="d-flex" style="width: 15rem;margin: auto;" >
+	<form name="f" action="notice.do" method="post" class="d-flex" style="width: 300px;margin: auto;" >
 		<select name="searchColum" id="searchColum">
 			<option value="notice_title">제목</option>
 			<option value="notice_content">내용</option>
@@ -126,10 +115,10 @@ $(function(){
 		</select>
 		
 		<input type="search" name="search" id="search" class="form-control me-sm-2">
-		<input type="date" name="date" id="date">
+		<input type="date" name="date" id="date" style="width: 400px;margin: auto;">
 		<input type="hidden" name="keyword" id="keyword">
 		<!-- <input type="button" value="검색" onclick="pro();"> -->
-		<button type="submit" class="btn btn-primary" onclick="pro();">검색</button>
+		<button type="submit" class="btn btn-primary" onclick="pro();" style="width: 200px;">검색</button>
 	</form>	
 	<br>
 	<br>
@@ -140,7 +129,6 @@ $(function(){
 		</c:forEach>
 	</div>
 	
-
->>>>>>> branch 'master' of https://github.com/yaps1/jspproject.git
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>

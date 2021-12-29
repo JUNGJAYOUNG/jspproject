@@ -71,11 +71,6 @@ $(function(){
 </div>
 
 <hr>
-
-
-
-
-
 <div class="container">
   <h2>추천배프</h2>
   <c:forEach var="c" items="${listRecBP}">

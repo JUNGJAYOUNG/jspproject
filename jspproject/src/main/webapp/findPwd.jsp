@@ -92,8 +92,12 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <div id="login">
-	<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;비밀번호 찾기
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
+	  <li class="breadcrumb-item active">비밀번호찾기</li>
+	</ol>
 	<div class="container">
 	 <div id="login-row" class="row justify-content-center align-items-center">
       	<div id="login-column" class="col-md-6">
@@ -127,6 +131,7 @@ $(document).ready(function(){
 			</div>
 			</div>
 		</div>			
-	</div>			
+	</div>		
+	<jsp:include page="footer.jsp"/>	
 </body>
 </html>

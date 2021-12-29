@@ -26,7 +26,8 @@ public class RegisterBPAction implements SistAction {
 		if(re==1) {
 			viewPage="registerBP.jsp";
 		}else {
-			viewPage="c.jsp";
+			viewPage = "error.jsp";
+			request.setAttribute("msg", "사업장 승인에 실패");
 			
 		}
 		return viewPage;
