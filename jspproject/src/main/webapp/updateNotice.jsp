@@ -11,6 +11,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -31,6 +32,6 @@
 		    </div>
 	    </div>
     </form>
-	
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

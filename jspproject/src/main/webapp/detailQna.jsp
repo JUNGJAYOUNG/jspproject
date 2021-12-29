@@ -13,6 +13,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -25,20 +26,19 @@
 	  <h3 class="card-header"><span class="badge bg-primary">제목</span>     ${q.qna_title }</h3>
 
 	  <div class="card-body">
-	    <p class="card-text"><span class="badge bg-primary">내용</span>     ${q.qna_content }</p>
+	    <p class="card-text"><span class="badge bg-primary">내용</span>     ${content }</p>
 	  </div>
-	  
+	   
 	  <div class="card-footer text-muted">
 	  <span class="badge bg-primary">답변</span>     ${q.ans }
 	  </div>
 	</div>
-	<br>
-	<br>
-	<br>
+
 	<form action="deleteQna.do?qna_no=${q.qna_no }" method="post">
 		<div style="width: 5rem;margin: auto;">
 			<button type="submit" class="btn btn-primary">삭제</button>
 		</div>
 	</form>
+<jsp:include page="footer.jsp"/> 
 </body>
 </html>

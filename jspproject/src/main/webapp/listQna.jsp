@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -42,7 +43,7 @@
 	  <c:forEach var="q" items="${list }">
 	    <tr class="table-primary">
 	      <td>${q.qna_no }</td>
-	      <td><a href="ansQna.do?qna_no=${q.qna_no }">${q.qna_title }</a></td>
+	      <td><a href="ansQna.do?qna_no=${q.qna_no }" style="color: white;">${q.qna_title }</a></td>
 	      <td>${q.member_id}</td>
 	      <td>${q.qna_date}</td>
 	    </tr>
@@ -59,12 +60,7 @@
 		</c:forEach>
 	</div>
 	<br>
-	<hr>
-	<form action="addQna.do" method="post">
-		<button type="submit" class="btn btn-primary">문의사항 등록(마이페이지로 이동)</button>
-	</form>
-	<form action="detailQna.do?qna_no=2" method="post">
-		<button type="submit" class="btn btn-primary">문의사항 확인(마이페이지로 이동)</button>
-	</form>
+
+<jsp:include page="footer.jsp"/> 
 </body>
 </html>

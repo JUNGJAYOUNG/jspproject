@@ -20,6 +20,10 @@ public class DetailNoticeAction implements SistAction {
 		int notice_no = Integer.parseInt(request.getParameter("notice_no"));
 		NoticeVO n = dao.getNotice(notice_no);
 		request.setAttribute("n",n);
+		String content = n.getNotice_content();
+		content = content.replace("\r\n", "<br>");
+		request.setAttribute("content", content);
+		//System.out.println(content);
 		return "detailNotice.jsp";
 	}
 

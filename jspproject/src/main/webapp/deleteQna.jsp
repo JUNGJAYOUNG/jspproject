@@ -13,7 +13,8 @@
 </style>
 </head>
 <body>
-<br>
+<jsp:include page="menu.jsp"/>
+	<br>
 	<br>
 	<br>
 	<h3><img src="image/blank.png"><a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;문의사항&nbsp;&nbsp;>&nbsp;&nbsp;문의사항 삭제</h3>
@@ -46,5 +47,6 @@
 			<!-- 마이페이지로 이동 수정 -->
 		</form>
 	</div>
+<jsp:include page="footer.jsp"/> 
 </body>
 </html>

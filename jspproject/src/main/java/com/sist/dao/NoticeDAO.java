@@ -144,7 +144,8 @@ public class NoticeDAO {
 			if(keyword != null) {
 				
 				if(searchColum.equals("notice_date")) {
-					sql2 += "where notice_date = '"+keyword+"'";
+					sql2 += "where to_char(notice_date,'yyyy-mm-dd') = '"+keyword+"'";
+					System.out.println(keyword);
 				}else {
 					sql2 += " where " + searchColum + " like '%"+keyword+"%'";
 					System.out.println("searchColum:"+searchColum);

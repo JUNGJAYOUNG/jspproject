@@ -5,9 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<style type="text/css">
+	body{
+		background-color: #9AD3BC;
+		background-image: url("image/error.jpg");
+		background-repeat: no-repeat;
+	}
+</style>
 </head>
 <body>
-	<h3>죄송합니다. 서비스 중 다음과 같은 문제가 발생하였습니다</h3>
-	${msg }
-</body>
+	<div class="alert alert-dismissible alert-primary">
+	  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	  <strong>오류 발생!</strong> <a href="#" class="alert-link">${msg }</a>
+	</div>
 </html>

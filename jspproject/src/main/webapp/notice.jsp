@@ -1,18 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<%
-	String notice_no = request.getParameter("notice_no");
-%>
-<%=notice_no %>
-=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -79,6 +66,7 @@ $(function(){
 </script>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <form  action="addNotice.do" method="post">
 	<br>
 	<br>
@@ -104,7 +92,7 @@ $(function(){
 	    <tr class="table-primary">
 	     <!-- <th scope="row">Primary</th> --> 
 	      <td>${n.notice_no }</td>
-	      <td><a href="detailNotice.do?notice_no=${n.notice_no }">${n.notice_title }</a></td>
+	      <td><a href="detailNotice.do?notice_no=${n.notice_no }" style="color: white;">${n.notice_title }</a></td>
 	      <td>${n.notice_date }</td>
 	    </tr>
 	    </c:forEach>
@@ -139,8 +127,6 @@ $(function(){
 			<a href="notice.do?pageNUM=${i }" style="color: green;">${i }</a>&nbsp;&nbsp;
 		</c:forEach>
 	</div>
-	
-
->>>>>>> branch 'master' of https://github.com/yaps1/jspproject.git
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -11,6 +11,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -28,11 +29,9 @@
 		</div>
 	<br>
 	<br>
-	<br>
-	
 	 <div class="form-group" style="width: 60rem;margin: auto">
 	     <label for="exampleTextarea" class="form-label mt-4">답변</label>
-	     <textarea class="form-control" id="exampleTextarea" rows="3" name="ans"  maxlength="1000">${q.ans }</textarea>
+	     <textarea class="form-control" id="exampleTextarea" rows="3" name="ans"  maxlength="1000" style="height: 15rem">${q.ans }</textarea>
 	     <br>
 	     <br>
 	    <div style="width: 10rem;margin: auto;">
@@ -41,9 +40,6 @@
 		</div>
 	  </div>
     </form>
-	
-	
-	
-	
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

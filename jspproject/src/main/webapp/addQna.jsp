@@ -10,6 +10,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -29,5 +30,6 @@
 	    	<button type="submit" class="btn btn-primary" style="width: 10rem;margin: auto;">등록</button>
 	    </div>
     </form>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

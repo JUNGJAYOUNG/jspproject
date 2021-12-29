@@ -13,6 +13,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 	<br>
 	<br>
 	<br>
@@ -36,5 +37,6 @@
 		<button type="submit" class="btn btn-primary">취소</button>
 	</form>
 	</div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

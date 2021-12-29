@@ -22,7 +22,9 @@ public class DetailQnaAction implements SistAction {
 		int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 		QnaVO q = dao.getQna(qna_no);
 		request.setAttribute("q", q);
+		String content = q.getQna_content();
+		content = content.replace("\r\n", "<br>");
+		request.setAttribute("content", content);
 		return "detailQna.jsp";
 	}
-
 }

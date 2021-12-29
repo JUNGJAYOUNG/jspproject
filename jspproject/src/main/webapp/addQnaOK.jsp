@@ -8,7 +8,7 @@
 </head>
 <body>
 <%
-	response.sendRedirect("listQna.do");
+	response.sendRedirect("mypage.do");
 %>
 </body>
 </html>
