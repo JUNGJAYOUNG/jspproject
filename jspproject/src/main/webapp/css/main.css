@@ -3,41 +3,34 @@
 		padding-top:100px;
 		width:100%;
 		height:500px;
-		background: url("../image/bg.png");
 		background-size: 100% 100%;
 		overflow:visible;
 		display: inline-block;
 }
+/*검색어*/
 .form-wrapper{
-		text-align: center;
 		width: 500px;
-		border: 1px solid black;
+		margin: 0 auto;
 }
-/*추천배프, 진행중인행사 카드박스*/
 
-.container{
-	margin : 0 auto;
-	text-align: center;
-	padding-bottom: 100px;
+form{
+	display: flex;
 }
-.container h1{
-	padding-top: 30px;
-	padding-bottom: 10px;
+input{
+	float: left;
 }
-.card {
-        height: 400px;
-        width: 350px;
-        border-radius: 15px;
-       	align-items:center;
-        display: inline-block;
-        margin-top: 30px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 
-        rgba(0, 0, 0, 0.19);
-        overflow: hidden;      
+input[type=search]{
+	width: 500px;
+	height: 50px;
 }
+input[type=submit]{
+	width: 80px;
+	height: 50px;
+}
+
+/*공지사항*/
 .notice-wrapper{
 	text-align: center;
-	padding-bottom: 60px;
 }
 .notice-wrapper h1{
 	padding-top: 30px;
@@ -46,3 +39,64 @@
 .notice{
 	display: inline-block;
 }
+
+
+/*추천배프, 진행중인행사*/
+	html,body {
+	        position: relative;
+	        height: 70%;
+	      }
+
+	body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+	  h1{
+	 	font-size: 30px;
+	 	padding-top: 30px;
+	 	padding-bottom: 30px;
+	 	text-align: center;
+	  }
+      .swiper {
+        width: 80%;
+        height: 80%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 50px;
+        background: #fff;
+		border:1px solid black;
+        /* Center slide text vertically */
+       /* display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;*/
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width:100%;
+        height:80%;
+        object-fit: cover;
+      }
+      .container-box {
+      	clear: both;
+      	display: flex;
+      	align-items: center;
+      	flex-direction: column;
+      }
+      
+      

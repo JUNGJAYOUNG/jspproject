@@ -56,6 +56,30 @@ public class NoticeDAO {
 		return list;
 	}
 	
+	//통합검색에서 공지사항 검색수
+	public int cntSearchNotice(String keyword) {
+		int cnt = 0;
+		try {
+			String sql = "select count(*) from(select notice_no,notice_title,notice_date "
+					+ "from notice "
+					+ "where notice_title like '%'|| ? ||'%' or notice_content like '%'|| ? ||'%')";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			pstmt.setString(2, keyword);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cnt = rs.getInt(1);
+			}
+			ConnectionProvider.close(conn, pstmt, rs);
+		} catch (Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		return cnt;	
+	}
+	
+	
+	
 	public static int pageSize = 5;			//한 화면에 보여줄 레코드의 수
 	public static int totalRecord;			//전체 레코드의 수
 	public static int totalPage;			//전체 페이지의 수

@@ -7,9 +7,12 @@
 <title>Insert title here</title>
 <style type="text/css">
 .cardBox{
-	display: inline-block;
+    display:flex;
+	width: 100%;
+	justify-content: center;
 }
- .card1 {
+ .card:first-child{margin-left:0}
+ .card {
         height: 400px;
         width: 350px;
         border-radius: 15px;
@@ -24,21 +27,36 @@
         }
 </style>
 </head>
+<jsp:include page="menu.jsp"/>
 <body>
-<body>
+<br>
+<h3>
+	<img src="image/blank.png">
+	<a>
+	<img src="image/home.png">
+	</a>
+	&nbsp;&nbsp;>&nbsp;&nbsp;관리자페이지
+</h3>
+
+
 	<div class="cardBox">
-		<div class="card1"><a></a>
-			<div class="image1"><img src="image/logo.png" width="100%" height="80%"></div>
-			<p>관리자페이지</p>
+		<div class="card"><a></a>
+			<div class="image1">
+			<a href="listMember.jsp"><img src="image/member_manage.png" width="100%"></a>
+			</div>
+			
 		</div>
-		<div class="card2"><a></a>
-			<div class="image2"><img></div>
-			<p></p>
+		<div class="card"><a></a>
+			<div class="image2">
+			<a href="manageBusiness.jsp"><img src="image/bp_manage.png" width="100%"></a>
+			</div>
 		</div>
-		<div class="card3"><a></a>
-			<div class="image3"><img></div>
-			<p></p>
+		<div class="card"><a></a>
+			<div class="image3">
+			<a href="ansQna.jsp"><img src="image/qna_manage.png" width="100%"></a>
+			</div>
 		</div>	
 	</div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>
