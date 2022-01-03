@@ -182,7 +182,7 @@ a{
 			<li><a href="tour.do">관광배프</a></li>
 			<li><a href="culture.do">문화배프</a></li>
 			<li><a href="addBusinessPlace.do">사업장등록</a></li>
-			<li><a href="notice.do">공지사항</a></li>
+			<li><a href="noticeMember.do">공지사항</a></li>
 			<li><a href="addQna.do">문의사항</a></li>
 		</ul>
 		

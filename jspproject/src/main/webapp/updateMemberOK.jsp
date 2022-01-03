@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-	response.sendRedirect("main.do");
+	response.sendRedirect("mypage.do");
 %>
 </body>
 </html>

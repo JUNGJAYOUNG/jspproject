@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +8,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <style type="text/css">
-	div{
-		width: 60%;
-		margin: auto;
-	}
-	
 	a{
 		color: white;
 	}
@@ -29,7 +23,7 @@
 	<br>
 	<br>
 	
-	<div>
+	<div style="width:80rem;margin:auto;">
 	<table class="table table-hover">
 	  <thead>
 	    <tr>

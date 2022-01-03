@@ -111,16 +111,18 @@ public class TourDetailAction implements SistAction {
 			System.out.println(re.getReview_date());
 		}
 		
+		String image= "emptyheart.png";
+		
 		HttpSession session = request.getSession();
 		
-		int member_no = (Integer)session.getAttribute("member_no");
-		
-		int re = f_dao.checkedFavor(bp_no, member_no);
-		
-		String image= "emptyheart.png";
-		if(re!=0) {
-			image="fullheart.png";
+		if(session.getAttribute("member_no")!=null) {
+			int member_no = (Integer)session.getAttribute("member_no");
+			int re = f_dao.checkedFavor(bp_no, member_no);
+			if(re!=0) {
+				image="fullheart.png";
+			}
 		}
+
 		request.setAttribute("image", image);
 		return "tourDetail.jsp";
 	}

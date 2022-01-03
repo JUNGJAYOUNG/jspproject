@@ -81,17 +81,17 @@ public class ReviewDAO {
 		}
 		return no;
 	}
-	public int insertReview(String comments,int bp_no/*,int member_no*/) {
+	public int insertReview(String comments,int bp_no, int member_no) {
 		int re=-1;
-		String sql = "insert into review values(?,sysdate,?,?,1)";
+		String sql = "insert into review values(?,sysdate,?,?,?)";
 		int no = getNextNo();
 		try {
 			Connection conn = ConnectionProvider.getConnection();
 			PreparedStatement pstmt= conn.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			pstmt.setString(2,comments );
+			pstmt.setString(2,comments);
 			pstmt.setInt(3, bp_no);
-			//pstmt.setInt(4, member_no);
+			pstmt.setInt(4, member_no);
 			re=pstmt.executeUpdate();
 			ConnectionProvider.close(conn, pstmt);
 		} catch (Exception e) {

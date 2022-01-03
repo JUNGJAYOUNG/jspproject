@@ -32,7 +32,7 @@ public class UpdateMemberOKAction implements SistAction {
 		int re = dao.updateMember(m);
 		String viewPage = "";
 		if(re==1) {
-			viewPage = "updateMemberOK.do";
+			viewPage = "updateMemberOK.jsp";
 		}else {
 			viewPage = "error.jsp";
 			request.setAttribute("msg", "게시물 수정에 실패");

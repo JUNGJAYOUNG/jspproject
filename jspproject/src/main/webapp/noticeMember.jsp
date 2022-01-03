@@ -89,14 +89,14 @@ $(function(){
 	    <tr class="table-primary">
 	     <!-- <th scope="row">Primary</th> --> 
 	      <td>${n.notice_no }</td>
-	      <td><a href="detailNotice.do?notice_no=${n.notice_no }" style="color: white;">${n.notice_title }</a></td>
+	      <td><a href="detailMemberNotice.do?notice_no=${n.notice_no }" style="color: white;">${n.notice_title }</a></td>
 	      <td>${n.notice_date }</td>
 	    </tr>
 	    </c:forEach>
 	  </tbody>
 	</table>
 	<br>
-		<button type="submit" class="btn btn-primary" style="float:right;">작성하기</button>
+		
 	</div>
 	<br>
 	<br>

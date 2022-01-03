@@ -44,6 +44,7 @@ function pro(){
 	clear: both;
 }
 #container {
+	margin: auto;
 	width: 80%;
 }
 </style>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,7 +85,7 @@ h2 {
 <body>
 <jsp:include page="menu.jsp"/>
 <% request.setCharacterEncoding("utf-8"); %>
-<a href="#"><img src="image/home.png"></a>&nbsp;&nbsp;>&nbsp;&nbsp;관리자페이지&nbsp;&nbsp;>&nbsp;&nbsp;회원관리&nbsp;&nbsp;>&nbsp;&nbsp;상세정보
+
 <ol class="breadcrumb">
 	  <li class="breadcrumb-item"><a href="main.do"><img src="image/home.png"></a></li>
 	  <li class="breadcrumb-item"><a href="manager.do">관리자페이지</a></li>

@@ -16,6 +16,8 @@ public class LogoutAction implements SistAction {
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("member_id");
+		session.removeAttribute("member_no");
+		
 		return "start.jsp";
 	}
 }

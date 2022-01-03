@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.dao.ReviewDAO;
 
-public class InsertReviewOKAction implements SistAction {
+public class InsertReviewTourOKAction implements SistAction {
 	public ReviewDAO dao;
-	public InsertReviewOKAction() {
+	public InsertReviewTourOKAction() {
 		dao = new ReviewDAO();
 	}
 	@Override
@@ -28,7 +28,7 @@ public class InsertReviewOKAction implements SistAction {
 		int re = dao.insertReview(comments, no, member_no);
 		String viewPage="";
 		if(re==1) {
-			viewPage="cultureDetail.do?no="+no;
+			viewPage="tourDetail.do?no="+no;
 		}else {
 			viewPage = "error.jsp";
 			request.setAttribute("msg", "리뷰 등록에 실패");

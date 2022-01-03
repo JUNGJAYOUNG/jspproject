@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,18 +38,18 @@
 	<div class="cardBox">
 		<div class="card"><a></a>
 			<div class="image1">
-			<a href="listMember.jsp"><img src="image/member_manage.png" width="100%"></a>
+			<a href="listMember.do"><img src="image/member_manage.png" width="100%"></a>
 			</div>
 			
 		</div>
 		<div class="card"><a></a>
 			<div class="image2">
-			<a href="manageBusiness.jsp"><img src="image/bp_manage.png" width="100%"></a>
+			<a href="manageBusiness.do"><img src="image/bp_manage.png" width="100%"></a>
 			</div>
 		</div>
 		<div class="card"><a></a>
 			<div class="image3">
-			<a href="ansQna.jsp"><img src="image/qna_manage.png" width="100%"></a>
+			<a href="listQna.do"><img src="image/qna_manage.png" width="100%"></a>
 			</div>
 		</div>	
 	</div>

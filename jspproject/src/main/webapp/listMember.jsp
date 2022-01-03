@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ include file="sessionLogin.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,7 +175,7 @@ tr > td{
 	  <li class="breadcrumb-item active">회원관리</li>
 	</ol>
 <hr>
-<div class="container">
+<div class="container" style="width:80%;margin:auto;">
 <div class="table table-hover">
 <table border="1" style="width:1000px;">
 	<tr>

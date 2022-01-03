@@ -28,7 +28,7 @@ public class DetailDAO {
 			re=pstmt.executeUpdate();
 			ConnectionProvider.close(conn, pstmt);
 		} catch (Exception e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 			// TODO: handle exception
 		}
 		return re;

@@ -310,12 +310,15 @@ public class BPDAO {
 	public ArrayList<BPVO> searchTourByMain(String keyword){
 		ArrayList<BPVO> list = new ArrayList<BPVO>();
 		try {
-		String sql = "select b.business_no,b.name,image "
-				+ "from businessplace b, detail d "
-				+ "where b.business_no=d.business_no and "
-				+ "b.business_type_no in (1,2,3,4) and "
-				+ "(replace(b.name,' ','') "
-				+ "like '%'||?||'%' or d.info like '%'||?||'%')";
+		String sql = "SELECT business_no,name,image "
+				+ "FROM businessplace WHERE name like '%' || ? || '%' "
+				+ "and business_type_no in (1,2,3,4) "
+				+ "UNION "
+				+ "SELECT b.business_no,name,image "
+				+ "FROM businessplace b, detail d "
+				+ "WHERE b.business_no=d.business_no and "
+				+ "info like '%' || ? || '%' and business_type_no in (1,2,3,4)";
+		
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, keyword);
@@ -359,11 +362,15 @@ public class BPDAO {
 	public ArrayList<BPVO> searchCultureByMain(String keyword){
 		ArrayList<BPVO> list = new ArrayList<BPVO>();
 		try {
-		String sql = "select b.business_no,b.name,image "
-				+ "from businessplace b, detail d "
-				+ "where b.business_no=d.business_no and "
-				+ "business_type_no in(5,6,7,8,9,10) and "
-				+ "(b.name like '%'||?||'%' or d.info like '%'||?||'%')";
+		String sql = "SELECT business_no,name,image "
+				+ "FROM businessplace WHERE name like '%' || ? || '%' "
+				+ "and business_type_no in (5,6,7,8,9,10) "
+				+ "UNION "
+				+ "SELECT b.business_no,name,image "
+				+ "FROM businessplace b, detail d "
+				+ "WHERE b.business_no=d.business_no and "
+				+ "info like '%' || ? || '%' and business_type_no in (5,6,7,8,9,10)";
+		
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, keyword);
@@ -480,7 +487,7 @@ public class BPDAO {
 	}
 	public int insertBP(BPVO b) {
 		int re=-1;
-		String sql = "insert into businessplace values(?,?,?,?,sysdate,?,?,?,0,?,1,?)";
+		String sql = "insert into businessplace values(?,?,?,?,sysdate,?,?,?,0,1,?,?)";
 		//int no = getNextNo();
 		try {
 			Connection conn = ConnectionProvider.getConnection();
@@ -498,7 +505,7 @@ public class BPDAO {
 			re=pstmt.executeUpdate();
 			ConnectionProvider.close(conn, pstmt);
 		} catch (Exception e) {
-			e.getMessage();// TODO: handle exception
+			System.out.println(e.getMessage());// TODO: handle exception
 		}
 	
 		return re;

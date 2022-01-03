@@ -183,7 +183,7 @@
 		<br>
 		
 		<h3>한줄후기</h3>
-		<form action="insertReviewOK.do?no=${b.bp_no}" method="post">
+		<form action="insertReviewTourOK.do?no=${b.bp_no}" method="post">
 			<div class="input-group mb-3" style="position: relative;">
 		     	<input type="text" class="form-control" placeholder="후기를 입력해주세요" name="comments" maxlength="20">
 		     	<button class="btn btn-primary" type="submit" id="button-addon2">등록</button>
